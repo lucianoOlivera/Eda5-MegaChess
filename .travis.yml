@@ -1,0 +1,20 @@
+
+# Set the build language
+language: python
+
+# Set the python version
+python: 3.6
+
+# Install the
+install:
+  - pip install -r requisitos.txt
+
+addons:
+  sonarqube:
+    - organization: "lucianoolivera"
+    - token:
+        secure: ca3604068b32768832995758fc1f2cfe3fcad484
+
+# Run the unit test
+script:
+  - sonnar -scanner
