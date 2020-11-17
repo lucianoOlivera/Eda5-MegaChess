@@ -33,3 +33,4 @@ class Context():
     def strategyLogic(self):
         print("Context: muestra los movimiento ,todabia nose como)")
 
+
