@@ -1,4 +1,6 @@
 ##chess pieces
+import numpy as np
+
 
 class Pieces(object):
     def __init__ (self, row, col, flag):
@@ -85,13 +87,13 @@ class Pawn(Pieces):
 def moveLine (movementN, dir, obj):
     row = obj.get_row
     col = obj.get_row
-    if dir=='up':
+    if dir == 'up':
         row -= movementN
-    elif dir=='down':
+    elif dir == 'down':
         row += movementN
-    elif dir=='rigth':
+    elif dir == 'rigth':
         col += movementN
-    elif dir=='left':
+    elif dir == 'left':
         col -= movementN
     return col, row
 
@@ -172,6 +174,12 @@ PPPPPPPPPPPPPPPP
 
 """
 
-a = King(5, 4, 'black', 'k')
-print(a.name)
-print(moveSpecial(2, 2, "ur", "s", a))
+
+# board
+
+class Board:
+
+    def __init__ (self, board):
+        self.board = np.arange(256)
+        self.board = self.board.reshape((16, 16))
+

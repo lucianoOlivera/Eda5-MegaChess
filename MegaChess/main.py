@@ -4,7 +4,7 @@ import websockets
 import json
 
 
-async def send (websocket, action, data):
+async def send(websocket, action, data):
     message = json.dumps(
         {
             'action': action,
@@ -18,24 +18,33 @@ async def send (websocket, action, data):
 async def start (token):
     uri = "ws://megachess.herokuapp.com/service?authtoken={}".format(token)
     async with websockets.connect(uri) as websocket:
+        messageEvent = {}
         while True:
             try:
                 response = await websocket.recv()
-                print(f"< {response}")
                 data = json.loads(response)
                 if data['event'] == 'update_user_list':
-                    pass
+                    print(f"< {response}")
                 if data['event'] == 'gameover':
-                    pass
+                    print(f"< {response}")
                 if data['event'] == 'ask_challenge':
-                    await send(websocket, 'accept_challenge',
-                               {
-                                   'board_id': data['data']['board_id'],
-                                   },
-                               )
+                    print(f"< {response}")
+                    board_id = data['data']['board_id']
+                    messageEvent['action'] = 'accept_challenge'
+                    messageEvent['board_id'] = board_id
+                    print(f'message{messageEvent}')
+                    await send(websocket, messageEvent['action'], {'board_id': messageEvent['board_id'], }, )
                 if data['event'] == 'your_turn':
-                    board = data['data']['board']
-                    color = data['data']['actual_turn']
+                    print(f"< {response}")
+                    messageEvent['action'] = 'move'
+                    messageEvent['data'] = data['data']['board_id']
+                    messageEvent['data'] = data['data']['turn_token']
+                    boardTurn = data['data']['board']
+                    colorTurn = data['data']['actual_turn']
+                    #crear un game con boardTurn colorTurn
+
+
+
                     await send(
                         websocket,
                         'move',
