@@ -1,4 +1,4 @@
-##EDA Talent Show🚀
+###EDA Talent Show🚀
 
 Desarrollo de juego MegaChess
 
