@@ -37,8 +37,8 @@ async def start (token):
                 if data['event'] == 'your_turn':
                     print(f"< {response}")
                     messageEvent['action'] = 'move'
-                    messageEvent['data'] = data['data']['board_id']
-                    messageEvent['data'] = data['data']['turn_token']
+                    messageEvent['data']['board_id'] = data['data']['board_id']
+                    messageEvent['data']['turn_token'] = data['data']['turn_token']
                     boardTurn = data['data']['board']
                     colorTurn = data['data']['actual_turn']
                     #crear un game con boardTurn colorTurn

@@ -17,4 +17,4 @@ addons:
 
 # Run the unit test
 script:
-  - sonnar -scanner
+  - pytest
