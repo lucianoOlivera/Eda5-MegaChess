@@ -3,16 +3,15 @@ import numpy as np
 
 
 class Pieces(object):
-    def __init__ (self, row, col, flag):
+    def __init__ (self, row, col):
         self.row = row
         self.column = col
-        self.colour = flag
+
 
     def __str__ (self):
         return (
             f' row :{self.row}'
             f' colunm : {self.column}'
-            f' colorur : {self.colour}'
         )
 
     def set_position (self, row, col):
@@ -29,8 +28,8 @@ class Pieces(object):
 
 
 class King(Pieces):
-    def __init__ (self, row, col, flag, name):
-        super().__init__(row, col, flag)
+    def __init__ (self, row, col, name):
+        super().__init__(row, col)
         self.name = name
 
     def __str__ (self):
@@ -38,17 +37,17 @@ class King(Pieces):
 
 
 class Queen(Pieces):
-    def __init__ (self, row, col, flag, name):
-        super().__init__(row, col, flag)
+    def __init__ (self, row, col, name):
+        super().__init__(row, col)
         self.name = name
 
     def __str__ (self):
         return super().__str__() + " name: " + str(self.name)
 
 
-class Castle(Pieces):
-    def __init__ (self, row, col, flag, name):
-        super().__init__(row, col, flag)
+class Rook(Pieces):
+    def __init__ (self, row, col, name):
+        super().__init__(row, col)
         self.name = name
 
     def __str__ (self):
@@ -56,8 +55,8 @@ class Castle(Pieces):
 
 
 class Bishop(Pieces):
-    def __init__ (self, row, col, flag, name):
-        super().__init__(row, col, flag)
+    def __init__ (self, row, col, name):
+        super().__init__(row, col)
         self.name = name
 
     def __str__ (self):
@@ -65,8 +64,8 @@ class Bishop(Pieces):
 
 
 class Knight(Pieces):
-    def __init__ (self, row, col, flag, name):
-        super().__init__(row, col, flag)
+    def __init__ (self, row, col, name):
+        super().__init__(row, col)
         self.name = name
 
     def __str__ (self):
@@ -74,8 +73,8 @@ class Knight(Pieces):
 
 
 class Pawn(Pieces):
-    def __init__ (self, row, col, flag, name):
-        super().__init__(row, col, flag)
+    def __init__ (self, row, col, name):
+        super().__init__(row, col )
         self.name = name
 
     def __str__ (self):

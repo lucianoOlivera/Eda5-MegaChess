@@ -3,6 +3,8 @@ import json
 import websockets
 import json
 
+from game import Game
+
 
 async def send(websocket, action, data):
     message = json.dumps(
@@ -41,7 +43,11 @@ async def start (token):
                     messageEvent['data']['turn_token'] = data['data']['turn_token']
                     boardTurn = data['data']['board']
                     colorTurn = data['data']['actual_turn']
-                    #crear un game con boardTurn colorTurn
+                    moveleft = data['data']['move_left']
+                    turntoken = data['data']['turn_token']
+                    # crear un game con boardTurn colorTurn
+                    game = Game(boardTurn, turntoken, moveleft)
+                    game.definestrategy(colorTurn)
 
 
 
