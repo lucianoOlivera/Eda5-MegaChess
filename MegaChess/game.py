@@ -1,6 +1,6 @@
 import numpy as np
 
-from core import Rook, Knight, Bishop, Queen, King, Pawn
+from core import Rook, Knight, Bishop, Queen, King, Pawn, Board
 from strategy import Context, WhiteStrategy, BlackStrategy
 
 
@@ -10,65 +10,32 @@ class Game():
         self.turn_token = turn_token
         self.move_left = move_left
 
-    def boardGame(self, board):
-        """     i = 0
-                    arr = []
-                    listBoard =[]
-                    for s, v in enumerate(board):
-                        listBoard.append(v)
-                    for row in range(0, 16):
-                        for col in range(0, 16):
-                            print(i)
-                            if listBoard[i] == 'r':
-                                i += 1
-                                rook = Rook(row, col, 'r')
-                                arr.append(rook)
-                            elif listBoard[i] == 'h':
-                                pass
-                            elif listBoard[i] == 'b':
-                                pass
-                            elif listBoard[i] == 'q':
-                                pass
-                            elif listBoard[i] == 'k':
-                                pass
-                            elif listBoard[i] == 'p':
-                                pass
-                            elif listBoard[i] == 'R':
-                                pass
-                            elif listBoard[i] == 'H':
-                                pass
-                            elif listBoard[i] == 'B':
-                                pass
-                            elif listBoard[i] == 'Q':
-                                pass
-                            elif listBoard[i] == 'K':
-                                pass
-                            elif listBoard[i] == 'P':
-                                pass
-
-                                i += 1
-
-                    return arr"""
+    def boardGame (self, board):
+        lista = []
+        for c, d in enumerate(board):
+            lista.append(d)
+        lista = np.array(lista)
+        lista = lista.reshape(16, 16)
         listBoard = []
-        for row, c in enumerate(board):
-            for col, a in enumerate(c):
+        for col, c in enumerate(lista):
+            for row, a in enumerate(c):
                 if a == "r":
-                    rook = Rook(row,col,'r')
+                    rook = Rook(row, col, 'r')
                     listBoard.append(rook)
                 elif a == 'h':
-                    knight = Knight(row,col,'k')
+                    knight = Knight(row, col, 'k')
                     listBoard.append(knight)
                 elif a == 'b':
-                    bishop = Bishop(row,col,'b')
+                    bishop = Bishop(row, col, 'b')
                     listBoard.append(bishop)
                 elif a == 'q':
-                    queen = Queen(row,col,'q')
+                    queen = Queen(row, col, 'q')
                     listBoard.append(queen)
                 elif a == 'k':
-                    king = King(row,col,'k')
+                    king = King(row, col, 'k')
                     listBoard.append(king)
                 elif a == 'p':
-                    pawn = Pawn(row,col,'p')
+                    pawn = Pawn(row, col, 'p')
                     listBoard.append(pawn)
                 elif a == 'R':
                     rook = Rook(row, col, 'R')
@@ -90,8 +57,7 @@ class Game():
                     listBoard.append(pawn)
         return listBoard
 
-
-    def definestrategy (self,board):
+    def definestrategy (self, board):
         boardGame = self.boardGame(board)
         if self.turn_token == "white":
             ctx = Context(WhiteStrategy())
@@ -101,9 +67,7 @@ class Game():
             ctx.strategyLogic(boardGame)
 
 
-a = Game("a","white","d")
+a = Game("a", "white", "d")
 
 board = "rrhhbbqqkkbbhhrrrrhhbbqqkkbbhhrrpppppppppppppppppppppppppppppppp                                                                                                                        P       PPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPRRHHBBQQKKBBHHRRRRHHBBQQKKBBHHRR"
-s = a.definestrategy(board)
-
-
+a.definestrategy(board)

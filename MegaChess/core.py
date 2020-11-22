@@ -18,13 +18,13 @@ class Pieces(object):
         self.row = row
         self.column = col
 
-    @property
-    def get_row (self):
-        return self.row
 
-    @property
+    def get_row (self):
+        return str(self.row)
+
+
     def get_colunm (self):
-        return self.column
+        return str(self.column)
 
 
 class King(Pieces):
@@ -35,6 +35,12 @@ class King(Pieces):
     def __str__ (self):
         return super().__str__() + " name: " + self.name
 
+    def get_row (self):
+        return super().get_row()
+
+    def get_colunm (self):
+        return super().get_colunm()
+
 
 class Queen(Pieces):
     def __init__ (self, row, col, name):
@@ -43,6 +49,12 @@ class Queen(Pieces):
 
     def __str__ (self):
         return super().__str__() + " name: " + str(self.name)
+
+    def get_row (self):
+        return super().get_row()
+
+    def get_colunm (self):
+        return super().get_colunm()
 
 
 class Rook(Pieces):
@@ -53,6 +65,12 @@ class Rook(Pieces):
     def __str__ (self):
         return super().__str__() + " name: " + str(self.name)
 
+    def get_row (self):
+        return super().get_row()
+
+    def get_colunm (self):
+        return super().get_colunm()
+
 
 class Bishop(Pieces):
     def __init__ (self, row, col, name):
@@ -61,6 +79,12 @@ class Bishop(Pieces):
 
     def __str__ (self):
         return super().__str__() + " name: " + str(self.name)
+
+    def get_row (self):
+        return super().get_row()
+
+    def get_colunm (self):
+        return super().get_colunm()
 
 
 class Knight(Pieces):
@@ -71,6 +95,12 @@ class Knight(Pieces):
     def __str__ (self):
         return super().__str__() + " name: " + str(self.name)
 
+    def get_row (self):
+        return super().get_row()
+
+    def get_colunm (self):
+        return super().get_colunm()
+
 
 class Pawn(Pieces):
     def __init__ (self, row, col, name):
@@ -79,6 +109,12 @@ class Pawn(Pieces):
 
     def __str__ (self):
         return super().__str__() + " name: " + str(self.name)
+
+    def get_row (self):
+        return super().get_row()
+
+    def get_colunm (self):
+        return super().get_colunm()
 
 
 # move
@@ -178,7 +214,9 @@ PPPPPPPPPPPPPPPP
 
 class Board:
 
-    def __init__ (self, board):
+    def __init__ (self):
         self.board = np.arange(256)
         self.board = self.board.reshape((16, 16))
 
+    def __str__(self):
+        return self.board

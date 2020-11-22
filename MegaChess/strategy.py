@@ -17,7 +17,10 @@ piezas """
 
 class BlackStrategy(StrategyChess):
     def strategyClassLogic (self, board: list):
-      return print("black")
+        for i in range(0, len(board)):
+            print(board[i].__str__())
+        return
+
 
 
 """logic of the strategy of the black pieces """
@@ -25,7 +28,9 @@ class BlackStrategy(StrategyChess):
 
 class WhiteStrategy(StrategyChess):
     def strategyClassLogic (self, board: list):
-        return print("while")
+        for i in range(0 ,len(board)):
+            print(board[i].__str__())
+        return
             #f' row :{board}'
 
 
