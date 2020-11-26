@@ -3,123 +3,55 @@ import numpy as np
 
 
 class Pieces(object):
-    def __init__ (self, row, col):
+    def __init__(self,row,col,name):
+        self.row = row
+        self.column = col
+        self.name = name
+
+    def __str__(self):
+        return f'row : {self.row} col = {self.column} name: {self.name}'
+
+    def set_position(self,row,col):
         self.row = row
         self.column = col
 
+    def get_row(self):
+        return self.row
 
-    def __str__ (self):
-        return (
-            f' row :{self.row}'
-            f' colunm : {self.column}'
-        )
-
-    def set_position (self, row, col):
-        self.row = row
-        self.column = col
-
-
-    def get_row (self):
-        return str(self.row)
-
-
-    def get_colunm (self):
-        return str(self.column)
+    def get_column(self):
+        return self.column
 
 
 class King(Pieces):
-    def __init__ (self, row, col, name):
-        super().__init__(row, col)
-        self.name = name
-
-    def __str__ (self):
-        return super().__str__() + " name: " + self.name
-
-    def get_row (self):
-        return super().get_row()
-
-    def get_colunm (self):
-        return super().get_colunm()
+    pass
 
 
 class Queen(Pieces):
-    def __init__ (self, row, col, name):
-        super().__init__(row, col)
-        self.name = name
-
-    def __str__ (self):
-        return super().__str__() + " name: " + str(self.name)
-
-    def get_row (self):
-        return super().get_row()
-
-    def get_colunm (self):
-        return super().get_colunm()
+    pass
 
 
 class Rook(Pieces):
-    def __init__ (self, row, col, name):
-        super().__init__(row, col)
-        self.name = name
-
-    def __str__ (self):
-        return super().__str__() + " name: " + str(self.name)
-
-    def get_row (self):
-        return super().get_row()
-
-    def get_colunm (self):
-        return super().get_colunm()
+    pass
 
 
 class Bishop(Pieces):
-    def __init__ (self, row, col, name):
-        super().__init__(row, col)
-        self.name = name
-
-    def __str__ (self):
-        return super().__str__() + " name: " + str(self.name)
-
-    def get_row (self):
-        return super().get_row()
-
-    def get_colunm (self):
-        return super().get_colunm()
+    pass
 
 
 class Knight(Pieces):
-    def __init__ (self, row, col, name):
-        super().__init__(row, col)
-        self.name = name
-
-    def __str__ (self):
-        return super().__str__() + " name: " + str(self.name)
-
-    def get_row (self):
-        return super().get_row()
-
-    def get_colunm (self):
-        return super().get_colunm()
+    pass
 
 
 class Pawn(Pieces):
-    def __init__ (self, row, col, name):
-        super().__init__(row, col )
-        self.name = name
+    pass
 
-    def __str__ (self):
-        return super().__str__() + " name: " + str(self.name)
 
-    def get_row (self):
-        return super().get_row()
-
-    def get_colunm (self):
-        return super().get_colunm()
+class Empty(Pieces):
+    pass
 
 
 # move
-
-def moveLine (movementN, dir, obj):
+def moveLine(movementN,dir,obj):
     row = obj.get_row
     col = obj.get_row
     if dir == 'up':
@@ -130,7 +62,7 @@ def moveLine (movementN, dir, obj):
         col += movementN
     elif dir == 'left':
         col -= movementN
-    return col, row
+    return col,row
 
 
 """
@@ -148,7 +80,7 @@ def moveLine (movementN, dir, obj):
 """
 
 
-def moveDiagonal (movementN, dir, obj):
+def moveDiagonal(movementN,dir,obj):
     row = obj.get_row
     col = obj.get_row
     if dir == 'rd':  # (right diagonal up)
@@ -163,7 +95,7 @@ def moveDiagonal (movementN, dir, obj):
     elif dir == 'dl':  # (left diagonal down)
         row += movementN
         col -= movementN
-    return row, col
+    return row,col
 
 
 """
@@ -180,16 +112,16 @@ def moveDiagonal (movementN, dir, obj):
 """
 
 
-def moveSpecial (movementN1, movementN2, dir1, dir2, obj):
+def moveSpecial(movementN1,movementN2,dir1,dir2,obj):
     row = obj.get_row
     col = obj.get_row
     name = obj.name
     if name == "P" or "p":
         if dir1 == 'up':
             col += movementN1
-        return row, col
+        return row,col
     # other special movements
-    return row, col
+    return row,col
 
 
 """
@@ -214,9 +146,15 @@ PPPPPPPPPPPPPPPP
 
 class Board:
 
-    def __init__ (self):
+    def __init__(self):
         self.board = np.arange(256)
-        self.board = self.board.reshape((16, 16))
+        self.board = self.board.reshape((16,16))
 
     def __str__(self):
         return self.board
+
+
+
+a = King(12,34,'k')
+
+print(a)
