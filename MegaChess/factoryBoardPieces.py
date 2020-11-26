@@ -1,46 +1,33 @@
-from core import Bishop,Queen,Empty,Knight,King,Pawn,Rook
+from pieces import Bishop,Queen,Empty,Knight,King,Pawn,Rook
 
 
 class Factory(object):
+
     def get_BoardPices(self,row,col,name):
-        listBoard = []
-        if name is "r":
-            rook = Rook(row,col,'r')
-            listBoard.append(rook)
-        elif name is 'h':
-            knight = Knight(row,col,'k')
-            listBoard.append(knight)
-        elif name is 'b':
-            bishop = Bishop(row,col,'b')
-            listBoard.append(bishop)
-        elif name is 'q':
-            queen = Queen(row,col,'q')
-            listBoard.append(queen)
-        elif name is 'k':
-            king = King(row,col,'k')
-            listBoard.append(king)
-        elif name is 'p':
-            pawn = Pawn(row,col,'p')
-            listBoard.append(pawn)
-        elif name is 'R':
-            rook = Rook(row,col,'R')
-            listBoard.append(rook)
-        elif name is 'H':
-            knight = Knight(row,col,'H')
-            listBoard.append(knight)
-        elif name is 'B':
-            bishop = Bishop(row,col,'B')
-            listBoard.append(bishop)
-        elif name is 'Q':
-            queen = Queen(row,col,'Q')
-            listBoard.append(queen)
-        elif name is 'K':
-            king = King(row,col,'K')
-            listBoard.append(king)
-        elif name is 'P':
-            pawn = Pawn(row,col,'P')
-            listBoard.append(pawn)
-        elif name is " ":
-            empty = Empty(row,col," ")
-            listBoard.append(empty)
-        return print(listBoard)
+        if name == "r":
+            return Rook(row,col,'r')
+        elif name == 'h':
+            return Knight(row,col,'k')
+        elif name == 'b':
+            return Bishop(row,col,'b')
+        elif name == 'q':
+            return Queen(row,col,'q')
+        elif name == 'k':
+            return King(row,col,'k')
+        elif name =='p':
+            return Pawn(row,col,'p')
+        elif name =='R':
+            return Rook(row,col,'R')
+        elif name == 'H':
+            return Knight(row,col,'H')
+        elif name == 'B':
+            return Bishop(row,col,'B')
+        elif name == 'Q':
+            return Queen(row,col,'Q')
+        elif name == 'K':
+            return King(row,col,'K')
+        elif name == 'P':
+            return Pawn(row,col,'P')
+        elif name == " ":
+            return Empty(row,col," ")
+
