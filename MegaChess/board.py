@@ -62,12 +62,12 @@ class Board:
             lista.append(d)
         lista = np.array(lista)
         lista = lista.reshape(16,16)
+        listBoard = []
         for col,c in enumerate(lista):
             for row,a in enumerate(c):
                 my_Factory = Factory()
-                my_Factory.get_BoardPices(row, col, a)
+                pieces = my_Factory.get_BoardPices(row,col,a)
+                listBoard.append(pieces)
+        return print(listBoard)
 
 
-board = "rrhhbbqqkkbbhhrrrrhhbbqqkkbbhhrrpppppppppppppppppppppppppppppppp                                                                                                                        P       PPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPRRHHBBQQKKBBHHRRRRHHBBQQKKBBHHRR"
-c = Board(board)
-c.boardGame()
