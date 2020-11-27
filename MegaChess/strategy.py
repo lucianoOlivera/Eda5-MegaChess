@@ -1,12 +1,10 @@
 from abc import ABC, abstractmethod
-
+from board import Board
 
 """<<Interface>>StrategyChess"""
-
-
 class StrategyChess(ABC):
     @abstractmethod
-    def strategyClassLogic (self, board: list) -> object:
+    def strategyClassLogic (self, board: Board) -> object:
         pass
 
 
@@ -16,10 +14,19 @@ piezas """
 """ logic of the strategy of the white pieces"""
 
 class BlackStrategy(StrategyChess):
-    def strategyClassLogic (self, board: list):
+    def strategyClassLogic (self, board: Board):
         for i in range(0, len(board)):
-            print(board[i].__str__())
-        return
+            if board[i].get_row() == '0':
+                print(board[i].get_row())
+
+    def Quen(self,board):
+        for i in range(0, len(board)):
+            print()
+    def Pawn(self,board):
+        for i in range(0, len(board)):
+            if board[i].get_name() == 'p':
+                print(board[i].get_name())
+
 
 
 
@@ -27,11 +34,18 @@ class BlackStrategy(StrategyChess):
 
 
 class WhiteStrategy(StrategyChess):
-    def strategyClassLogic (self, board: list):
-        for i in range(0 ,len(board)):
-            print(board[i].__str__())
-        return
-            #f' row :{board}'
+    def strategyClassLogic(self, board: Board):
+        self.Pawn(board)
+
+    def Quen(self,board):
+        for i in range(0, len(board)):
+            print()
+    def Pawn(self,board):
+        for i in range(0, len(board)):
+            if board[i].get_name() == 'p':
+                print(board[i].get_name())
+
+
 
 
 """Context """
@@ -49,7 +63,7 @@ class Context():
     def strategy (self, strategy: StrategyChess):
         self._strategy = strategy
 
-    def strategyLogic (self, board: list):
+    def strategyLogic (self, board: Board):
         resultado = self._strategy.strategyClassLogic(board)
 
 

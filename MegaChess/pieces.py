@@ -1,6 +1,5 @@
 ##chess pieces
 
-
 class Pieces(object):
     def __init__(self,row,col,name):
         self.row = row
@@ -19,6 +18,9 @@ class Pieces(object):
 
     def get_column(self):
         return self.column
+
+    def get_name(self):
+        return self.name
 
 
 class King(Pieces):
