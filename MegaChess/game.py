@@ -1,7 +1,8 @@
 import numpy as np
-from strategy import Context,WhiteStrategy,BlackStrategy
+from strategyColour import Context
 from board import Board
-
+from blackStrategy import BlackStrategy
+from whiteStrategy import WhiteStrategy
 
 class Game():
     def __init__(self,board_id,turn_token,move_left) -> object:
@@ -18,3 +19,9 @@ class Game():
         elif self.turn_token == "black":
             ctx = Context(BlackStrategy())
             ctx.strategyLogic(boardStrategy)
+
+
+
+board =  "rrhhbbqqkkbbhhrrrrhhbbqqkkbbhhrrpppppppppppppppppppppppppppppppp                                                                                                                        P       PPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPRRHHBBQQKKBBHHRRRRHHBBQQKKBBHHRR"
+a = Game(12,"black",23)
+a.defineStrategy(board)
