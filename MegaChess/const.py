@@ -1,0 +1,9 @@
+ws = "ws://megachess.herokuapp.com/service?authtoken={}"
+token = '59c8d9f1-d9ad-4994-8207-959ed182bf5b'
+Pawn = 10
+Knight = 30
+Bishop = 40
+Rook = 60
+Queen = 5
+King = 100
+Empty = 0
