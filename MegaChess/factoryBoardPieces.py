@@ -2,7 +2,7 @@ from pieces import Bishop,Queen,Empty,Knight,King,Pawn,Rook
 
 
 class Factory(object):
-    def get_BoardPices(self,row,col,name):
+    def get_BoardPieces(self,row,col,name):
         if name == "r":
             return Rook(row,col,'r','black')
         elif name == 'h':
