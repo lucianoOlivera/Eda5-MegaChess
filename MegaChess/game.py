@@ -22,6 +22,3 @@ class Game():
 
 
 
-board =  "rrhhbbqqkkbbhhrrrrhhbbqqkkbbhhrrpppppppppppppppppppppppppppppppp                                                                                                                        P       PPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPRRHHBBQQKKBBHHRRRRHHBBQQKKBBHHRR"
-a = Game(12,"black",23)
-a.defineStrategy(board)
