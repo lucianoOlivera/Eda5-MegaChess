@@ -5,7 +5,7 @@ Desarrollo de juego MegaChess
 ### Pre-requisitos 📋
 
 ```
- pip instalar websocket
+ pip install websocket
  pip install numpy 
 ```
 
