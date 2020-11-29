@@ -7,10 +7,6 @@ class StrategyChess(ABC):
     def strategyClassLogic (self, board: Board) -> object:
         pass
 
-
-"""( “from_row:” “from_col”:, “to_row”: “to_col”: )ser números entre 0 y 15.son los valores de movimiento de la 
-piezas """
-
 """ logic of the strategy of the white pieces"""
 
 class BlackStrategy(StrategyChess):
@@ -26,9 +22,6 @@ class BlackStrategy(StrategyChess):
         for i in range(0, len(board)):
             if board[i].get_name() == 'p':
                 print(board[i].get_name())
-
-
-
 
 """logic of the strategy of the black pieces """
 
