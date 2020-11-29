@@ -20,7 +20,7 @@ class Board:
         for col, c in enumerate(lista):
             for row, a in enumerate(c):
                 my_Factory = Factory()
-                pieces = my_Factory.get_BoardPices(col,row,a)
+                pieces = my_Factory.get_BoardPieces(col,row,a)
                 listBoard.append(pieces)
         return listBoard
 
