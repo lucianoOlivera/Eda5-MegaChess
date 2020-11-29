@@ -1,18 +1,15 @@
 import unittest
 
 from board import Board
+from game import Game
 
 
 class TestBoard(unittest.TestCase):
-    board = ""
-    boardTest = ""
 
     def setUp(self):
-        self.board = "rrhhbbqqkkbbhhrrrrhhbbqqkkbbhhrrpppppppppppppppppppppppppppppppp                                     " \
-                "                                                                                   P       PPPPPPPP " \
-                "PPPPPPPPPPPPPPPPPPPPPPPRRHHBBQQKKBBHHRRRRHHBBQQKKBBHHRR "
-        self.boardTest="rrhhbbqqkkbbhhrrrrhhbbqqkkbbhhrrpppppppppppppppppppppppppppppppp                                                                                                                        P       PPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPRRHHBBQQKKBBHHRRRRHHBBQQKKBBHHRR"
+        self.board = "rrhhbbqqkkbbhhrrrrhhbbbqkkbbhhrrpppppppppppppppppppppppppppppppp                    q                                                                                                   P       PPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPRRHHBBQQKKBBHHRRRRHHBBQQKKBBHHRR"
+        self.a = Game(12,"black",23)
+        self.b = "[3, 0, 4, 0, 10]"
 
     def test_Board(self):
-
-        self.assertEqual(Board(self.board),self.boardTest,"is not equals")
+        self.assertEqual(self.a.defineStrategy(self.board),self.b,"Is not Equals")
