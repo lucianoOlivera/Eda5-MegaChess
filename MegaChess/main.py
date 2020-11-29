@@ -2,7 +2,7 @@ import asyncio
 import websockets
 import json
 from factoryEvent import FactoryEvent
-
+from const import ws,token
 
 
 async def send(websocket,action,data):
@@ -14,10 +14,8 @@ async def send(websocket,action,data):
         )
     print(message)
     await websocket.send(message)
-
-
 async def start(token):
-    uri = "ws://megachess.herokuapp.com/service?authtoken={}".format(token)
+    uri = ws.format(token)
     async with websockets.connect(uri) as websocket:
         while True:
             try:
@@ -37,5 +35,4 @@ async def start(token):
             except Exception as e:
                 print('retry')
 
-
-asyncio.get_event_loop().run_until_complete(start('59c8d9f1-d9ad-4994-8207-959ed182bf5b'))
+asyncio.get_event_loop().run_until_complete(start(token))
