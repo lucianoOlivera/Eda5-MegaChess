@@ -6,15 +6,13 @@ from movesBoard import MovesBoard
 class BlackStrategy(StrategyChess):
 
     def strategyClassLogic(self,board):
-        listMoves1 = [QueenBlack(board).movesAtack()]
-
-        # listHighScore = MoveScore().highScore(listMoves)
-        """listMoves = [QueenBlack(board).movesAtack(),QueenBlack(board).movesAtack(),
+        listMoves = [QueenBlack(board).movesAtack(),QueenBlack(board).moves(),
                      PawnBlack(board).moves(),PawnBlack(board).movesAtack(),KingBlack(board).moves(),
                      KingBlack(board).movesAtack(),RookBlack(board).moves(),RookBlack(board).movesAtack(),
-                    ] """
-        # listHighScore = MoveScore().highScore(listMoves)
-        print(listMoves1)
+                     BishopBlack(board).moves(),BishopBlack(board).movesAtack(),
+                    ]
+        listHighScore = MoveScore().highScore(listMoves)
+        print(listHighScore)
 
 
 class PawnBlack(PiecesStrategy):
@@ -70,7 +68,6 @@ class QueenBlack(PiecesStrategy):
         for i in range(0,len(self.board)):
             if self.board[i].get_name() == "q" and self.board[i + 16].get_name() == " ":
                 spaceUp = MovesBoard().moveLine("up",self.board,self.board[i])
-                print(len(spaceUp))
                 score = MoveScore().moveScore(self.board[i],spaceUp[0].get_name())
                 moves.append(
                     [self.board[i].get_row(),self.board[i].get_column(),spaceUp[0].get_row(),
@@ -117,7 +114,6 @@ class QueenBlack(PiecesStrategy):
                 moves.append(
                     [self.board[i].get_row(),self.board[i].get_column(),spaceRD[0].get_row(),
                      spaceRD[0].get_column(),score])
-        print(moves)
         return moves
 
     def movesAtack(self):
@@ -195,7 +191,7 @@ class QueenBlack(PiecesStrategy):
                         [self.board[i].get_row(),self.board[i].get_column(),
                          self.board[i - ((len(spaceRD) + 1) * 15)].get_row(),
                          self.board[i - ((len(spaceRD) + 1) * 15)].get_column(),score])
-        print(movesAtack)
+
         return movesAtack
 
 
@@ -360,7 +356,6 @@ class BishopBlack(PiecesStrategy):
                 spaceRD1 = MovesBoard().moveDiagonal("rd",self.board,self.board[i])
                 if self.board[i + (len(spaceRD1) * 17)].get_row()<15 and self.board[
                     i + ((len(spaceRD1) + 1) * 17)].get_colour() == "white":
-                    print(len(spaceRD1))
                     score = MoveScore().moveScore(self.board[i],self.board[i + ((len(spaceRD1) + 1) * 17)].get_name())
                     movesAtack.append(
                         [self.board[i].get_row(),self.board[i].get_column(),
