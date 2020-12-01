@@ -10,6 +10,7 @@ class StrategyChess(ABC):
     def strategyClassLogic(self,board: Board) -> object:
         pass
 
+
 """Context """
 
 
@@ -25,5 +26,6 @@ class Context():
     def strategy(self,strategy: StrategyChess):
         self._strategy = strategy
 
-    def strategyLogic(self,board: Board):
-        resultado = self._strategy.strategyClassLogic(board)
+    def strategyLogic(self,board: Board) -> object :
+        result = self._strategy.strategyClassLogic(board)
+        return result
