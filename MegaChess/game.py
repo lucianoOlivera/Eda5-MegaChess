@@ -4,8 +4,9 @@ from board import Board
 from blackStrategy import BlackStrategy
 from whiteStrategy import WhiteStrategy
 
+
 class Game():
-    def __init__(self,board_id,turn_token,move_left) -> object:
+    def __init__(self,board_id,turn_token,move_left):
         self.board_id = board_id
         self.turn_token = turn_token
         self.move_left = move_left
@@ -13,15 +14,13 @@ class Game():
     def defineStrategy(self,board):
         boardGame = Board(board)
         boardStrategy = boardGame.boardGame()
+        result = ""
         if self.turn_token == "white":
             ctx = Context(WhiteStrategy())
-            ctx.strategyLogic(boardStrategy)
+            result = ctx.strategyLogic(boardStrategy)
         elif self.turn_token == "black":
             ctx = Context(BlackStrategy())
-            ctx.strategyLogic(boardStrategy)
+            result = ctx.strategyLogic(boardStrategy)
+        return result
 
 
-
-board =  "rrhhbbqqkkbbhhrrrrhhbbbqkkbbhhrrpppppppppppppppppppppppppppppppp                    q                                                                                                   P       PPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPRRHHBBQQKKBBHHRRRRHHBBQQKKBBHHRR"
-a = Game(12,"black",23)
-a.defineStrategy(board)
