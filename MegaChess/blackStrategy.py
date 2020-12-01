@@ -10,9 +10,13 @@ class BlackStrategy(StrategyChess):
                      PawnBlack(board).moves(),PawnBlack(board).movesAtack(),KingBlack(board).moves(),
                      KingBlack(board).movesAtack(),RookBlack(board).moves(),RookBlack(board).movesAtack(),
                      BishopBlack(board).moves(),BishopBlack(board).movesAtack(),
-                    ]
+                     ]
         listHighScore = MoveScore().highScore(listMoves)
-        print(listHighScore)
+        from_row = listHighScore[0]
+        from_col = listHighScore[1]
+        to_row = listHighScore[2]
+        to_col = listHighScore[3]
+        return from_row,from_col,to_row,to_col
 
 
 class PawnBlack(PiecesStrategy):
@@ -362,14 +366,14 @@ class BishopBlack(PiecesStrategy):
                          self.board[i + ((len(spaceRD1) + 1) * 17)].get_row(),
                          self.board[i + ((len(spaceRD1) + 1) * 17)].get_column(),score])
             if self.board[i].get_name() == "b" and self.board[i + 15].get_name() == " ":
-                 spaceldd1 = MovesBoard().moveDiagonal("ldd",self.board,self.board[i])
-                 if self.board[i + (len(spaceldd1) * 15)].get_row()<15 and self.board[
-                        i + ((len(spaceldd1) + 1) * 15)].get_colour() == "white":
-                        score = MoveScore().moveScore(self.board[i],self.board[i + ((len(spaceldd1) + 1) * 15)].get_name())
-                        movesAtack.append(
-                            [self.board[i].get_row(),self.board[i].get_column(),
-                             self.board[i + ((len(spaceldd1) + 1) * 15)].get_row(),
-                             self.board[i + ((len(spaceldd1) + 1) * 15)].get_column(),score])
+                spaceldd1 = MovesBoard().moveDiagonal("ldd",self.board,self.board[i])
+                if self.board[i + (len(spaceldd1) * 15)].get_row()<15 and self.board[
+                    i + ((len(spaceldd1) + 1) * 15)].get_colour() == "white":
+                    score = MoveScore().moveScore(self.board[i],self.board[i + ((len(spaceldd1) + 1) * 15)].get_name())
+                    movesAtack.append(
+                        [self.board[i].get_row(),self.board[i].get_column(),
+                         self.board[i + ((len(spaceldd1) + 1) * 15)].get_row(),
+                         self.board[i + ((len(spaceldd1) + 1) * 15)].get_column(),score])
             if self.board[i].get_name() == "b" and self.board[i - 17].get_name() == " ":
                 spaceDR1 = MovesBoard().moveDiagonal("dr",self.board,self.board[i])
                 if self.board[i - (len(spaceDR1) * 17)].get_row()>0 and self.board[
