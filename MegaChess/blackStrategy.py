@@ -38,31 +38,18 @@ class PawnBlack(PiecesStrategy):
     def movesAtack(self):
         movesAtack = []
         for i in range(0,len(self.board)):
-            if self.board[i].get_column() == 0 and self.board[i].get_row()<9:
-                if self.board[i + 17].get_colour() == "white":
-                    score = MoveScore().moveScore(self.board[i],self.board[i + 17].get_name())
+            if self.board[i].get_name() == "p" and self.board[i + 17].get_name() == "white" and self.board[i].get_column() < 15:
+                    score = MoveScore().moveScore(self.board[i],self.board[i+17].get_name())
                     movesAtack.append(
-                        [self.board[i].get_row(),self.board[i].get_column(),self.board[i + 17].get_row(),
-                         self.board[i + 17].get_column(),score])
-            elif self.board[i].get_column() == 15 and self.board[i].get_row()<9:
-                if self.board[i + 15].get_colour() == "white":
+                        [self.board[i].get_row(),self.board[i].get_column(),
+                         self.board[i+17].get_row(),
+                         self.board[i+17].get_column(),score])
+            if self.board[i].get_name() == "p" and self.board[i + 15].get_name() == ""and self.board[i].get_column() > 0:
                     score = MoveScore().moveScore(self.board[i],self.board[i + 15].get_name())
                     movesAtack.append(
-                        [self.board[i].get_row(),self.board[i].get_column(),self.board[i + 15].get_row(),
+                        [self.board[i].get_row(),self.board[i].get_column(),
+                         self.board[i + 15].get_row(),
                          self.board[i + 15].get_column(),score])
-            else:
-                if self.board[i].get_row()<9:
-                    if self.board[i + 17].get_colour() == "white":
-                        score = MoveScore().moveScore(self.board[i],self.board[i + 17].get_name())
-                        movesAtack.append(
-                            [self.board[i].get_row(),self.board[i].get_column(),self.board[i + 17].get_row(),
-                             self.board[i + 17].get_column(),score])
-                elif self.board[i].get_row()<9:
-                    if self.board[i + 15].get_colour() == "white":
-                        score = MoveScore().moveScore(self.board[i],self.board[i + 15].get_name())
-                        movesAtack.append(
-                            [self.board[i].get_row(),self.board[i].get_column(),self.board[i + 15].get_row(),
-                             self.board[i + 15].get_column(),score])
         return movesAtack
 
 
