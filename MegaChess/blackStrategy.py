@@ -38,13 +38,13 @@ class PawnBlack(PiecesStrategy):
     def movesAtack(self):
         movesAtack = []
         for i in range(0,len(self.board)):
-            if self.board[i].get_name() == "p" and self.board[i + 17].get_name() == "white" and self.board[i].get_column() < 15:
+            if self.board[i].get_name() == "P" and self.board[i + 17].get_name() == "black" and self.board[i].get_column() < 15:
                     score = MoveScore().moveScore(self.board[i],self.board[i+17].get_name())
                     movesAtack.append(
                         [self.board[i].get_row(),self.board[i].get_column(),
                          self.board[i+17].get_row(),
                          self.board[i+17].get_column(),score])
-            if self.board[i].get_name() == "p" and self.board[i + 15].get_name() == ""and self.board[i].get_column() > 0:
+            if self.board[i].get_name() == "P" and self.board[i + 15].get_name() == " " and self.board[i].get_column() > 0:
                     score = MoveScore().moveScore(self.board[i],self.board[i + 15].get_name())
                     movesAtack.append(
                         [self.board[i].get_row(),self.board[i].get_column(),
@@ -165,8 +165,8 @@ class QueenBlack(PiecesStrategy):
                          self.board[i + ((len(spaceldd) + 1) * 15)].get_row(),
                          self.board[i + ((len(spaceldd) + 1) * 15)].get_column(),score])
             if self.board[i].get_name() == "q" and self.board[i - 17].get_name() == " ":
-                spaceDR = MovesBoard().moveDiagonal("dr",self.board,self.board[i])
-                if self.board[i - (len(spaceDR) * 17)].get_row()>0 and self.board[
+                spaceDR = MovesBoard().moveDiagonal("dl",self.board,self.board[i])
+                if self.board[i - (len(spaceDR) * 17)].get_column()>0 and self.board[
                     i - ((len(spaceDR) + 1) * 17)].get_colour() == "white":
                     score = MoveScore().moveScore(self.board[i],self.board[i - ((len(spaceDR) + 1) * 17)].get_name())
                     movesAtack.append(
@@ -174,9 +174,8 @@ class QueenBlack(PiecesStrategy):
                          self.board[i - ((len(spaceDR) + 1) * 17)].get_row(),
                          self.board[i - ((len(spaceDR) + 1) * 17)].get_column(),score])
             if self.board[i].get_name() == "q" and self.board[i - 15].get_name() == " ":
-                spaceRD = MovesBoard().moveDiagonal("dl",self.board,self.board[i])
-                if self.board[i - (len(spaceRD) * 15)].get_row()>0 and self.board[
-                    i - ((len(spaceRD) + 1) * 15)].get_colour() == "white":
+                spaceRD = MovesBoard().moveDiagonal("dr",self.board,self.board[i])
+                if self.board[i - (len(spaceRD) * 15)].get_row() > 0 and self.board[i - ((len(spaceRD) + 1) * 15)].get_colour() == "white":
                     score = MoveScore().moveScore(self.board[i],self.board[i - ((len(spaceRD) + 1) * 15)].get_name())
                     movesAtack.append(
                         [self.board[i].get_row(),self.board[i].get_column(),
@@ -363,7 +362,7 @@ class BishopBlack(PiecesStrategy):
                          self.board[i + ((len(spaceldd1) + 1) * 15)].get_column(),score])
             if self.board[i].get_name() == "b" and self.board[i - 17].get_name() == " ":
                 spaceDR1 = MovesBoard().moveDiagonal("dr",self.board,self.board[i])
-                if self.board[i - (len(spaceDR1) * 17)].get_row()>0 and self.board[
+                if self.board[i - (len(spaceDR1) * 17)].get_column()<15 and self.board[
                     i - ((len(spaceDR1) + 1) * 17)].get_colour() == "white":
                     score = MoveScore().moveScore(self.board[i],self.board[i - ((len(spaceDR1) + 1) * 17)].get_name())
                     movesAtack.append(
@@ -372,7 +371,7 @@ class BishopBlack(PiecesStrategy):
                          self.board[i - ((len(spaceDR1) + 1) * 17)].get_column(),score])
             if self.board[i].get_name() == "b" and self.board[i - 15].get_name() == " ":
                 spaceRD1 = MovesBoard().moveDiagonal("dl",self.board,self.board[i])
-                if self.board[i - (len(spaceRD1) * 15)].get_row()>0 and self.board[
+                if self.board[i - (len(spaceRD1) * 15)].get_column()<15 and self.board[
                     i - ((len(spaceRD1) + 1) * 15)].get_colour() == "white":
                     score = MoveScore().moveScore(self.board[i],self.board[i - ((len(spaceRD1) + 1) * 15)].get_name())
                     movesAtack.append(
