@@ -32,7 +32,6 @@ class GameOver(ServerEvent):
 class AskChallenge(ServerEvent):
     def __init__(self,response):
         self.response = response
-
     def run(self):
         board_id = self.response['data']['board_id']
         messageEvent['action'] = 'accept_challenge'
@@ -53,6 +52,10 @@ class YourTurn(ServerEvent):
         moveleft = self.response['data']['move_left']
         turntoken = self.response['data']['turn_token']
         game = Game(boardTurn,turntoken,moveleft)
-        game.defineStrategy(colorTurn)
+        result = game.defineStrategy(colorTurn)
+        messageEvent['data']['from_row'] = result[0]
+        messageEvent['data']['from_col'] = result[1]
+        messageEvent['data']['to_row'] = result[2]
+        messageEvent['data']['to_col'] = result[3]
 
         return messageEvent
