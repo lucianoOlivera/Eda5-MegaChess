@@ -21,13 +21,13 @@ class MoveScore():
         elif board.get_name() is 'h' or board.get_name() is 'H':
             scorePiece = PieceValue().value(name)
             return Knight + scorePiece
-        elif board.get_name() is 'q' or board.get_name() is 'q':
+        elif board.get_name() is 'q' or board.get_name() is 'Q':
             scorePiece = PieceValue().value(name)
             return Queen + scorePiece
         elif board.get_name() is 'r' or board.get_name() is 'R':
             scorePiece = PieceValue().value(name)
             return Rook + scorePiece
-        elif board.get_name() is 'b' or board.get_name() is 'b':
+        elif board.get_name() is 'b' or board.get_name() is 'B':
             scorePiece = PieceValue().value(name)
             return Bishop + scorePiece
         elif board.get_name() is 'K' or board.get_name() is 'K':
