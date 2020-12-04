@@ -18,4 +18,3 @@ addons:
 # Run the unit test
 script:
   - pytest -v
-  - sonar-scanner
