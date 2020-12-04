@@ -30,7 +30,7 @@ class MoveScore():
         elif board.get_name() is 'b' or board.get_name() is 'B':
             scorePiece = PieceValue().value(name)
             return Bishop + scorePiece
-        elif board.get_name() is 'K' or board.get_name() is 'K':
+        elif board.get_name() is 'K' or board.get_name() is 'k':
             scorePiece = PieceValue().value(name)
             return Knight + scorePiece
 
