@@ -1,15 +1,15 @@
 import pytest
 
-from blackStrategy import KingBlack
+from blackStrategy import BishopBlack
 from board import Board
 
 board = (      'rrhhbbqqkkbbhhrr'
                'rrhhbbbqkkbbhhrr'
                'pppppppppppppppp'
                'pppppppppppppppp'
-               'rrrrrrrrrrrrrrrr'
                '                '
-               '       k        '
+               '                '
+               '                '
                '                '
                '                '
                '                '
@@ -24,11 +24,11 @@ boardStart = (  'rrhhbbqqkkbbhhrr'
                 'pppppppppppppppp'
                 'pppppppppppppppp'
                 '                '
+                'PPPPPPPPPPPPPPPP'
                 '                '
-                '       PPP      '
-                '       PkP      '
-                '       PPP      '
+                '        b       '
                 '                '
+                'PPPPPPPPPPPPPPPP'
                 '                '
                 '                '
                 'PPPPPPPPPPPPPPPP'
@@ -44,7 +44,7 @@ boardNone=  (  'rrhhbbqqkkbbhhrr'
                '                '
                '                '
                '       ppp      '
-               '       pkp      '
+               '       pbp      '
                '       ppp      '
                '                '
                '                '
@@ -60,9 +60,9 @@ boardGameNone = Board(boardNone).boardGame()
    "imput,expected",[
             (boardGame,[]),
             (boardGameNone,[]),
-            (boardGameStart,[[7, 8, 8, 8, 40], [7, 8, 6, 8, 40], [7, 8, 7, 9, 40], [7, 8, 7, 7, 40], [7, 8, 8, 7, 40], [7, 8, 6, 7, 40], [7, 8, 8, 9, 40], [7, 8, 6, 9, 40]]
+            (boardGameStart,[[7, 8, 9, 10, 50], [7, 8, 9, 6, 50], [7, 8, 5, 6, 50], [7, 8, 5, 10, 50]]
 )
 
        ])
-def test_KingBlackMovesAtck(imput,expected):
-    assert KingBlack(imput).movesAtack() == expected
+def test_BishopBlackMovesAtck(imput,expected):
+    assert BishopBlack(imput).movesAtack() == expected

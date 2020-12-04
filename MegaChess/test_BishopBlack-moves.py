@@ -1,8 +1,8 @@
 import pytest
 
-from blackStrategy import RookBlack
+from blackStrategy import BishopBlack
 from board import Board
-from whiteStrategy import KingWhite,RookWhite
+
 
 board = (      'rrhhbbqqkkbbhhrr'
                'rrhhbbbqkkbbhhrr'
@@ -25,13 +25,13 @@ boardStart = (  'rrhhbbqqkkbbhhrr'
                 'pppppppppppppppp'
                 'pppppppppppppppp'
                 '                '
-                '       p        '
                 '                '
                 '                '
-                ' p     R      p '
+                '                '
+                '       b        '
                 '                '
                 '                '
-                '       p        '
+                '                '
                 'PPPPPPPPPPPPPPPP'
                 'PPPPPPPPPPPPPPPP'
                 'RRHHBBQQKKBBHHRR'
@@ -44,9 +44,9 @@ boardNone=  (  'rrhhbbqqkkbbhhrr'
                '                '
                '                '
                '                '
-               '      PPP       '
-               '      PRP       '
-               '      PPP       '
+               '      ppp       '
+               '      pbp       '
+               '      ppp       '
                '                '
                '                '
                'PPPPPPPPPPPPPPPP'
@@ -61,8 +61,9 @@ boardGameNone = Board(boardNone).boardGame()
    "imput,expected",[
             (boardGame,[]),
             (boardGameNone,[]),
-            (boardGameStart,[[8, 7, 10, 7, 60], [8, 7, 6, 7, 60], [8, 7, 8, 13, 60], [8, 7, 8, 2, 60]])
+            (boardGameStart,[[8, 7, 11, 10, 40], [8, 7, 11, 4, 40], [8, 7, 4, 3, 40], [8, 7, 4, 11, 40]]
+)
 
        ])
-def test_RookWhiteMoves(imput,expected):
-    assert RookWhite(imput).moves() == expected
+def test_BishopBlackMoves(imput,expected):
+    assert BishopBlack(imput).moves() == expected
