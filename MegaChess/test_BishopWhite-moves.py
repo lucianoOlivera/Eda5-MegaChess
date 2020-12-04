@@ -1,8 +1,7 @@
 import pytest
 
-from blackStrategy import BishopBlack
 from board import Board
-
+from whiteStrategy import BishopWhite
 
 board = (      'rrhhbbqqkkbbhhrr'
                'rrhhbbbqkkbbhhrr'
@@ -28,7 +27,7 @@ boardStart = (  'rrhhbbqqkkbbhhrr'
                 '                '
                 '                '
                 '                '
-                '       b        '
+                '       B        '
                 '                '
                 '                '
                 '                '
@@ -44,9 +43,9 @@ boardNone=  (  'rrhhbbqqkkbbhhrr'
                '                '
                '                '
                '                '
-               '      ppp       '
-               '      pbp       '
-               '      ppp       '
+               '      PPP       '
+               '      PBP       '
+               '      PPP       '
                '                '
                '                '
                'PPPPPPPPPPPPPPPP'
@@ -61,9 +60,7 @@ boardGameNone = Board(boardNone).boardGame()
    "imput,expected",[
             (boardGame,[]),
             (boardGameNone,[]),
-            (boardGameStart,[[8, 7, 11, 10, 40], [8, 7, 11, 4, 40], [8, 7, 4, 3, 40], [8, 7, 4, 11, 40]]
-)
-
+            (boardGameStart,[[8, 7, 11, 10, 40], [8, 7, 11, 4, 40], [8, 7, 4, 11, 40], [8, 7, 4, 3, 40]])
        ])
-def test_BishopBlackMoves(imput,expected):
-    assert BishopBlack(imput).moves() == expected
+def test_BishopWhiteMoves(imput,expected):
+    assert BishopWhite(imput).moves() == expected
