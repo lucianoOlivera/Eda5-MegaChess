@@ -25,9 +25,9 @@ boardStart = (  'rrhhbbqqkkbbhhrr'
                 'pppppppppppppppp'
                 '                '
                 '                '
-                '                '
-                '                '
-                '                '
+                '       PPP      '
+                '       PkP      '
+                '       PPP      '
                 '                '
                 '                '
                 '                '
@@ -43,9 +43,9 @@ boardNone=  (  'rrhhbbqqkkbbhhrr'
                '                '
                '                '
                '                '
-               '                '
-               '                '
-               '                '
+               '       ppp      '
+               '       pkp      '
+               '       ppp      '
                '                '
                '                '
                'PPPPPPPPPPPPPPPP'
@@ -58,10 +58,11 @@ boardGameNone = Board(boardNone).boardGame()
 
 @pytest.mark.parametrize(
    "imput,expected",[
-            (boardGameStart,[]),
+            (boardGame,[]),
             (boardGameNone,[]),
-            (boardGame,[[6, 7, 7, 7, 30], [6, 7, 5, 7, 30], [6, 7, 6, 8, 30], [6, 7, 6, 6, 30], [6, 7, 5, 6, 30], [6, 7, 7, 8, 30], [6, 7, 5, 8, 30]]
+            (boardGameStart,[[7, 8, 8, 8, 40], [7, 8, 6, 8, 40], [7, 8, 7, 9, 40], [7, 8, 7, 7, 40], [7, 8, 8, 7, 40], [7, 8, 6, 7, 40], [7, 8, 8, 9, 40], [7, 8, 6, 9, 40]]
 )
+
        ])
-def test_KingBlackMoves(imput,expected):
-    assert KingBlack(imput).moves() == expected
+def test_KingBlackMovesAtck(imput,expected):
+    assert KingBlack(imput).movesAtack() == expected
