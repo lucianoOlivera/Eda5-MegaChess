@@ -1,8 +1,6 @@
 import pytest
-
-from blackStrategy import QueenBlack
 from board import Board
-
+from whiteStrategy import QueenWhite
 
 board = (      'rrhhbbqqkkbbhhrr'
                'rrhhbbbqkkbbhhrr'
@@ -28,7 +26,7 @@ boardStart = (  'rrhhbbqqkkbbhhrr'
                 '                '
                 '                '
                 '                '
-                '       q        '
+                '       Q        '
                 '                '
                 '                '
                 '                '
@@ -44,9 +42,9 @@ boardNone=  (  'rrhhbbqqkkbbhhrr'
                '                '
                '                '
                '                '
-               '      ppp       '
-               '      pqp       '
-               '      ppp       '
+               '      PPP       '
+               '      PQP       '
+               '      PPP       '
                '                '
                '                '
                'PPPPPPPPPPPPPPPP'
@@ -64,6 +62,7 @@ boardGameNone = Board(boardNone).boardGame()
             (boardGameStart,[[8, 7, 11, 7, 5], [8, 7, 4, 7, 5], [8, 7, 8, 15, 5], [8, 7, 8, 0, 5], [8, 7, 11, 10, 5], [8, 7, 11, 4, 5], [8, 7, 4, 11, 5], [8, 7, 4, 3, 5]]
 )
 
+
        ])
-def test_QueenBlackMoves(imput,expected):
-    assert QueenBlack(imput).moves() == expected
+def test_QueenWhiteMoves(imput,expected):
+    assert QueenWhite(imput).moves() == expected
