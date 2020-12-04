@@ -17,5 +17,5 @@ addons:
 
 # Run the unit test
 script:
-  - pytest
+  - pytest -v
   - sonar-scanner
