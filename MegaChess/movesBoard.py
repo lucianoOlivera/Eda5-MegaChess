@@ -63,9 +63,9 @@ class MovesBoard():
                         return self.dr
 
             elif dir == 'dl':  # (left diagonal down)
-                if board[i].get_row() == boardI.get_row() and board[i].get_column() == boardI.get_column() and board[i - 17].get_name() == " " and board[i].get_column()>0:
+                if board[i].get_row() == boardI.get_row() and board[i].get_column() == boardI.get_column() and board[i - 17].get_name() == " " and board[i].get_column() > 0:
                     self.dl.clear()
-                    if board[i].get_column() != 15:
+                    if board[i].get_column() != 0:
                         MovesBoard().moveDiagonal(dir,board,board[i - 17])
                         self.dl.append(board[i - 17])
                         return self.dl
