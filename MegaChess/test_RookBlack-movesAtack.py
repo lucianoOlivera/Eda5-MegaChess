@@ -1,5 +1,6 @@
 import pytest
 
+from blackStrategy import RookBlack
 from board import Board
 from whiteStrategy import KingWhite,RookWhite
 
@@ -7,7 +8,7 @@ board = (      'rrhhbbqqkkbbhhrr'
                'rrhhbbbqkkbbhhrr'
                'pppppppppppppppp'
                'pppppppppppppppp'
-               'rrrrrrrrrrrrrrrr'
+               '                '
                '                '
                '                '
                '                '
@@ -24,13 +25,13 @@ boardStart = (  'rrhhbbqqkkbbhhrr'
                 'pppppppppppppppp'
                 'pppppppppppppppp'
                 '                '
-                '       p        '
+                '       P        '
                 '                '
                 '                '
-                ' p     R      p '
+                ' P     r      P '
                 '                '
                 '                '
-                '       p        '
+                '       P        '
                 'PPPPPPPPPPPPPPPP'
                 'PPPPPPPPPPPPPPPP'
                 'RRHHBBQQKKBBHHRR'
@@ -43,9 +44,9 @@ boardNone=  (  'rrhhbbqqkkbbhhrr'
                '                '
                '                '
                '                '
-               '      PPP       '
-               '      PRP       '
-               '      PPP       '
+               '      ppp       '
+               '      prp       '
+               '      ppp       '
                '                '
                '                '
                'PPPPPPPPPPPPPPPP'
@@ -60,8 +61,8 @@ boardGameNone = Board(boardNone).boardGame()
    "imput,expected",[
             (boardGame,[]),
             (boardGameNone,[]),
-            (boardGameStart,[[8, 7, 11, 7, 70], [8, 7, 5, 7, 70], [8, 7, 8, 14, 70], [8, 7, 8, 1, 60]])
-
+            (boardGameStart,[[8, 7, 11, 7, 70], [8, 7, 5, 7, 70], [8, 7, 8, 14, 70], [8, 7, 8, 1, 60]]
+)
        ])
-def test_RookWhiteMovesAtck(imput,expected):
-    assert RookWhite(imput).movesAtack() == expected
+def test_RookBlackMovesAtck(imput,expected):
+    assert RookBlack(imput).movesAtack() == expected

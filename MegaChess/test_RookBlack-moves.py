@@ -1,6 +1,6 @@
 import pytest
 
-
+from blackStrategy import RookBlack
 from board import Board
 from whiteStrategy import KingWhite
 
@@ -8,7 +8,7 @@ board = (      'rrhhbbqqkkbbhhrr'
                'rrhhbbbqkkbbhhrr'
                'pppppppppppppppp'
                'pppppppppppppppp'
-               'rrrrrrrrrrrrrrrr'
+               '                '
                '                '
                '                '
                '                '
@@ -25,13 +25,13 @@ boardStart = (  'rrhhbbqqkkbbhhrr'
                 'pppppppppppppppp'
                 'pppppppppppppppp'
                 '                '
+                '       P        '
                 '                '
                 '                '
-                '                '
-                '       K        '
-                '                '
+                ' P     r      P '
                 '                '
                 '                '
+                '       P        '
                 'PPPPPPPPPPPPPPPP'
                 'PPPPPPPPPPPPPPPP'
                 'RRHHBBQQKKBBHHRR'
@@ -44,9 +44,9 @@ boardNone=  (  'rrhhbbqqkkbbhhrr'
                '                '
                '                '
                '                '
-               '      PPP       '
-               '      PKP       '
-               '      PPP       '
+               '      ppp       '
+               '      prp       '
+               '      ppp       '
                '                '
                '                '
                'PPPPPPPPPPPPPPPP'
@@ -61,8 +61,8 @@ boardGameNone = Board(boardNone).boardGame()
    "imput,expected",[
             (boardGame,[]),
             (boardGameNone,[]),
-            (boardGameStart,[[8, 7, 9, 7, 30], [8, 7, 7, 7, 30], [8, 7, 8, 8, 30], [8, 7, 8, 6, 30], [8, 7, 9, 6, 30], [8, 7, 7, 6, 30], [8, 7, 9, 8, 30], [8, 7, 7, 8, 30]]
+            (boardGameStart,[[8, 7, 10, 7, 60], [8, 7, 6, 7, 60], [8, 7, 8, 13, 60], [8, 7, 8, 2, 60]]
 )
        ])
-def test_KingWhiteMoves(imput,expected):
-    assert KingWhite(imput).moves() == expected
+def test_RookBlackMoves(imput,expected):
+    assert RookBlack(imput).moves() == expected
