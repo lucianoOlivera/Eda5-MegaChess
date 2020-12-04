@@ -1,7 +1,7 @@
 import pytest
 
-from blackStrategy import KingBlack
 from board import Board
+from whiteStrategy import KingWhite
 
 board = (      'rrhhbbqqkkbbhhrr'
                'rrhhbbbqkkbbhhrr'
@@ -25,9 +25,9 @@ boardStart = (  'rrhhbbqqkkbbhhrr'
                 'pppppppppppppppp'
                 '                '
                 '                '
-                '       PPP      '
-                '       PkP      '
-                '       PPP      '
+                '       ppp      '
+                '       pKp      '
+                '       ppp      '
                 '                '
                 '                '
                 '                '
@@ -43,9 +43,9 @@ boardNone=  (  'rrhhbbqqkkbbhhrr'
                '                '
                '                '
                '                '
-               '       ppp      '
-               '       pkp      '
-               '       ppp      '
+               '       PPP      '
+               '       PKP      '
+               '       PPP      '
                '                '
                '                '
                'PPPPPPPPPPPPPPPP'
@@ -62,7 +62,6 @@ boardGameNone = Board(boardNone).boardGame()
             (boardGameNone,[]),
             (boardGameStart,[[7, 8, 8, 8, 40], [7, 8, 6, 8, 40], [7, 8, 7, 9, 40], [7, 8, 7, 7, 40], [7, 8, 8, 7, 40], [7, 8, 6, 7, 40], [7, 8, 8, 9, 40], [7, 8, 6, 9, 40]]
 )
-
        ])
-def test_KingBlackMovesAtck(imput,expected):
-    assert KingBlack(imput).movesAtack() == expected
+def test_KingWhiteMovesAtck(imput,expected):
+    assert KingWhite(imput).movesAtack() == expected

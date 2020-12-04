@@ -1,7 +1,8 @@
 import pytest
 
-from blackStrategy import KingBlack
+
 from board import Board
+from whiteStrategy import KingWhite
 
 board = (      'rrhhbbqqkkbbhhrr'
                'rrhhbbbqkkbbhhrr'
@@ -9,7 +10,7 @@ board = (      'rrhhbbqqkkbbhhrr'
                'pppppppppppppppp'
                'rrrrrrrrrrrrrrrr'
                '                '
-               '       k        '
+               '                '
                '                '
                '                '
                '                '
@@ -27,7 +28,7 @@ boardStart = (  'rrhhbbqqkkbbhhrr'
                 '                '
                 '                '
                 '                '
-                '                '
+                '       K        '
                 '                '
                 '                '
                 '                '
@@ -43,9 +44,9 @@ boardNone=  (  'rrhhbbqqkkbbhhrr'
                '                '
                '                '
                '                '
-               '                '
-               '                '
-               '                '
+               '      PPP       '
+               '      PKP       '
+               '      PPP       '
                '                '
                '                '
                'PPPPPPPPPPPPPPPP'
@@ -58,10 +59,10 @@ boardGameNone = Board(boardNone).boardGame()
 
 @pytest.mark.parametrize(
    "imput,expected",[
-            (boardGameStart,[]),
+            (boardGame,[]),
             (boardGameNone,[]),
-            (boardGame,[[6, 7, 7, 7, 30], [6, 7, 5, 7, 30], [6, 7, 6, 8, 30], [6, 7, 6, 6, 30], [6, 7, 5, 6, 30], [6, 7, 7, 8, 30], [6, 7, 5, 8, 30]]
+            (boardGameStart,[[8, 7, 9, 7, 30], [8, 7, 7, 7, 30], [8, 7, 8, 8, 30], [8, 7, 8, 6, 30], [8, 7, 9, 6, 30], [8, 7, 7, 6, 30], [8, 7, 9, 8, 30], [8, 7, 7, 8, 30]]
 )
        ])
-def test_KingBlackMoves(imput,expected):
-    assert KingBlack(imput).moves() == expected
+def test_KingWhiteMoves(imput,expected):
+    assert KingWhite(imput).moves() == expected
