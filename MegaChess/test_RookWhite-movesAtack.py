@@ -1,7 +1,7 @@
 import pytest
 
 from board import Board
-from whiteStrategy import KingWhite
+from whiteStrategy import KingWhite,RookWhite
 
 board = (      'rrhhbbqqkkbbhhrr'
                'rrhhbbbqkkbbhhrr'
@@ -9,7 +9,7 @@ board = (      'rrhhbbqqkkbbhhrr'
                'pppppppppppppppp'
                'rrrrrrrrrrrrrrrr'
                '                '
-               '       k        '
+               '                '
                '                '
                '                '
                '                '
@@ -24,13 +24,13 @@ boardStart = (  'rrhhbbqqkkbbhhrr'
                 'pppppppppppppppp'
                 'pppppppppppppppp'
                 '                '
-                '                '
-                '       ppp      '
-                '       pKp      '
-                '       ppp      '
+                '       p        '
                 '                '
                 '                '
+                ' p     R      p '
                 '                '
+                '                '
+                '       p        '
                 'PPPPPPPPPPPPPPPP'
                 'PPPPPPPPPPPPPPPP'
                 'RRHHBBQQKKBBHHRR'
@@ -43,9 +43,9 @@ boardNone=  (  'rrhhbbqqkkbbhhrr'
                '                '
                '                '
                '                '
-               '       PPP      '
-               '       PKP      '
-               '       PPP      '
+               '      PPP       '
+               '      PRP       '
+               '      PPP       '
                '                '
                '                '
                'PPPPPPPPPPPPPPPP'
@@ -60,8 +60,8 @@ boardGameNone = Board(boardNone).boardGame()
    "imput,expected",[
             (boardGame,[]),
             (boardGameNone,[]),
-            (boardGameStart,[[7, 8, 8, 8, 40], [7, 8, 6, 8, 40], [7, 8, 7, 9, 40], [7, 8, 7, 7, 40], [7, 8, 8, 7, 40], [7, 8, 6, 7, 40], [7, 8, 8, 9, 40], [7, 8, 6, 9, 40]]
-)
+            (boardGameStart,[[8, 7, 11, 7, 70], [8, 7, 5, 7, 70], [8, 7, 8, 14, 70], [8, 7, 8, 1, 60]])
+
        ])
-def test_KingWhiteMovesAtck(imput,expected):
-    assert KingWhite(imput).movesAtack() == expected
+def test_RookWhiteMovesAtck(imput,expected):
+    assert RookWhite(imput).movesAtack() == expected
