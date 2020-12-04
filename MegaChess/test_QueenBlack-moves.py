@@ -1,6 +1,6 @@
 import pytest
 
-from blackStrategy import BishopBlack
+from blackStrategy import QueenBlack
 from board import Board
 
 
@@ -28,7 +28,7 @@ boardStart = (  'rrhhbbqqkkbbhhrr'
                 '                '
                 '                '
                 '                '
-                '       b        '
+                '       q        '
                 '                '
                 '                '
                 '                '
@@ -45,7 +45,7 @@ boardNone=  (  'rrhhbbqqkkbbhhrr'
                '                '
                '                '
                '      ppp       '
-               '      pbp       '
+               '      pqp       '
                '      ppp       '
                '                '
                '                '
@@ -61,9 +61,9 @@ boardGameNone = Board(boardNone).boardGame()
    "imput,expected",[
             (boardGame,[]),
             (boardGameNone,[]),
-            (boardGameStart,[[8, 7, 11, 10, 40], [8, 7, 11, 4, 40], [8, 7, 4, 3, 40], [8, 7, 4, 11, 40]]
+            (boardGameStart,[[8, 7, 11, 7, 5], [8, 7, 4, 7, 5], [8, 7, 8, 15, 5], [8, 7, 8, 0, 5], [8, 7, 11, 10, 5], [8, 7, 11, 4, 5], [8, 7, 4, 11, 5], [8, 7, 4, 3, 5]]
 )
 
        ])
-def test_BishopBlackMoves(imput,expected):
-    assert BishopBlack(imput).moves() == expected
+def test_QueenBlackMoves(imput,expected):
+    assert QueenBlack(imput).moves() == expected

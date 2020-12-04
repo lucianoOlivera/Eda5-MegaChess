@@ -25,12 +25,12 @@ boardStart = (  'rrhhbbqqkkbbhhrr'
                 'pppppppppppppppp'
                 'pppppppppppppppp'
                 '                '
-                '                '
-                '                '
-                '                '
-                '       q        '
-                '                '
-                '                '
+                'PPPPPPPPPPPPPPPP'
+                'P              P'
+                'P              P'
+                'P       q      P'
+                'P              P'
+                'PPPPPPPPPPPPPPPP'
                 '                '
                 'PPPPPPPPPPPPPPPP'
                 'PPPPPPPPPPPPPPPP'
@@ -61,9 +61,9 @@ boardGameNone = Board(boardNone).boardGame()
    "imput,expected",[
             (boardGame,[]),
             (boardGameNone,[]),
-            (boardGameStart,[[8, 7, 11, 7, 5], [8, 7, 4, 7, 5], [8, 7, 8, 15, 5], [8, 7, 8, 0, 5], [8, 7, 11, 10, 5], [8, 7, 11, 4, 5], [8, 7, 4, 11, 5], [8, 7, 4, 3, 5]]
+            (boardGameStart,[[8, 8, 10, 8, 15], [8, 8, 5, 8, 15], [8, 8, 8, 15, 15], [8, 8, 8, 0, 15], [8, 8, 10, 10, 15], [8, 8, 10, 6, 15], [8, 8, 5, 5, 15], [8, 8, 5, 11, 15]]
 )
 
        ])
-def test_QueenBlackMoves(imput,expected):
-    assert QueenBlack(imput).moves() == expected
+def test_QueenBlackMovesAtack(imput,expected):
+    assert QueenBlack(imput).movesAtack() == expected
