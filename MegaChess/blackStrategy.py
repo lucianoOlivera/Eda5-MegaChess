@@ -38,13 +38,13 @@ class PawnBlack(PiecesStrategy):
     def movesAtack(self):
         movesAtack = []
         for i in range(0,len(self.board)):
-            if self.board[i].get_name() == "P" and self.board[i + 17].get_name() == "black" and self.board[i].get_column() < 15:
+            if self.board[i].get_name() == "p" and self.board[i + 17].get_colour() == "white" and self.board[i].get_column() < 15:
                     score = MoveScore().moveScore(self.board[i],self.board[i+17].get_name())
                     movesAtack.append(
                         [self.board[i].get_row(),self.board[i].get_column(),
                          self.board[i+17].get_row(),
                          self.board[i+17].get_column(),score])
-            if self.board[i].get_name() == "P" and self.board[i + 15].get_name() == " " and self.board[i].get_column() > 0:
+            if self.board[i].get_name() == "p" and self.board[i + 15].get_colour() == "white" and self.board[i].get_column() > 0:
                     score = MoveScore().moveScore(self.board[i],self.board[i + 15].get_name())
                     movesAtack.append(
                         [self.board[i].get_row(),self.board[i].get_column(),
@@ -139,13 +139,12 @@ class QueenBlack(PiecesStrategy):
                          self.board[i + len(spaceRight) + 1].get_column(),score])
             if self.board[i].get_name() == "q" and self.board[i - 1].get_name() == " ":
                 spaceLeft = MovesBoard().moveLine("left",self.board,self.board[i])
-                if self.board[i - len(spaceLeft)].get_column()>0 and self.board[
-                    i - len(spaceLeft) + 1].get_colour() == "white":
-                    score = MoveScore().moveScore(self.board[i],self.board[i - len(spaceLeft) + 1].get_name())
+                if self.board[i - len(spaceLeft)].get_column()>0 and self.board[ i - len(spaceLeft) - 1].get_colour() == "white":
+                    score = MoveScore().moveScore(self.board[i],self.board[i - len(spaceLeft) - 1].get_name())
                     movesAtack.append(
                         [self.board[i].get_row(),self.board[i].get_column(),
-                         self.board[i - len(spaceLeft) + 1].get_row(),
-                         self.board[i - len(spaceLeft) + 1].get_column(),score])
+                         self.board[i - len(spaceLeft) - 1].get_row(),
+                         self.board[i - len(spaceLeft) - 1].get_column(),score])
             if self.board[i].get_name() == "q" and self.board[i + 17].get_name() == " ":
                 spaceRD = MovesBoard().moveDiagonal("rd",self.board,self.board[i])
                 if self.board[i + (len(spaceRD) * 17)].get_row()<15 and self.board[
@@ -189,7 +188,7 @@ class KingBlack(PiecesStrategy):
     def moves(self):
         moves = []
         for i in range(0,len(self.board)):
-            if self.board[i].get_name() == "k" and self.board[i + 16].get_name() == " ":
+            if self.board[i].get_name() == "k" and self.board[i].get_row()< 15 and self.board[i + 16].get_name() == " ":
                 score = MoveScore().moveScore(self.board[i],self.board[i + 16].get_name())
                 moves.append(
                     [self.board[i].get_row(),self.board[i].get_column(),self.board[i + 16].get_row(),
@@ -209,31 +208,72 @@ class KingBlack(PiecesStrategy):
                 moves.append(
                     [self.board[i].get_row(),self.board[i].get_column(),self.board[i - 1].get_row(),
                      self.board[i - 1].get_column(),score])
+            if self.board[i].get_name() == "K" and self.board[i].get_row()< 15 and self.board[i + 15].get_name() == " ":
+                score = MoveScore().moveScore(self.board[i],self.board[i + 15].get_name())
+                moves.append(
+                    [self.board[i].get_row(),self.board[i].get_column(),self.board[i + 15].get_row(),
+                     self.board[i + 15].get_column(),score])
+            if self.board[i].get_name() == "k" and self.board[i - 17].get_name() == " ":
+                score = MoveScore().moveScore(self.board[i],self.board[i - 17].get_name())
+                moves.append(
+                    [self.board[i].get_row(),self.board[i].get_column(),self.board[i - 17].get_row(),
+                     self.board[i  - 17].get_column(),score])
+            if self.board[i].get_name() == "k" and self.board[i].get_row()< 15 and self.board[i + 17].get_name() == " ":
+                score = MoveScore().moveScore(self.board[i],self.board[i + 17].get_name())
+                moves.append(
+                    [self.board[i].get_row(),self.board[i].get_column(),self.board[i + 17].get_row(),
+                     self.board[i + 17].get_column(),score])
+            if self.board[i].get_name() == "k" and self.board[i - 15].get_name() == " ":
+                score = MoveScore().moveScore(self.board[i],self.board[i - 15].get_name())
+                moves.append(
+                    [self.board[i].get_row(),self.board[i].get_column(),self.board[i - 15].get_row(),
+                     self.board[i - 15].get_column(),score])
+
         return moves
 
     def movesAtack(self):
         movesAtack = []
         for i in range(0,len(self.board)):
-            if self.board[i].get_name() == "k" and self.board[i + 17].get_name() == "white":
-                score = MoveScore().moveScore(self.board[i],self.board[i + 17].get_name())
-                movesAtack.append(
-                    [self.board[i].get_row(),self.board[i].get_column(),self.board[i + 17].get_row(),
-                     self.board[i + 17].get_column(),score])
-            if self.board[i].get_name() == "k" and self.board[i + 15].get_name() == "white":
-                score = MoveScore().moveScore(self.board[i],self.board[i + 15].get_name())
-                movesAtack.append(
-                    [self.board[i].get_row(),self.board[i].get_column(),self.board[i + 15].get_row(),
-                     self.board[i + 15].get_column(),score])
-            if self.board[i].get_name() == "k" and self.board[i - 17].get_name() == "white":
-                score = MoveScore().moveScore(self.board[i],self.board[i - 17].get_name())
-                movesAtack.append(
-                    [self.board[i].get_row(),self.board[i].get_column(),self.board[i - 17].get_row(),
-                     self.board[i - 17].get_column(),score])
-            if self.board[i].get_name() == "k" and self.board[i - 15].get_name() == "white":
-                score = MoveScore().moveScore(self.board[i],self.board[i - 15].get_name())
-                movesAtack.append(
-                    [self.board[i].get_row(),self.board[i].get_column(),self.board[i - 15].get_row(),
-                     self.board[i - 15].get_column(),score])
+                if self.board[i].get_name() == "k" and self.board[i].get_row()<15 and self.board[i + 16].get_colour() == "white":
+                    score = MoveScore().moveScore(self.board[i],self.board[i + 16].get_name())
+                    movesAtack.append(
+                        [self.board[i].get_row(),self.board[i].get_column(),self.board[i + 16].get_row(),
+                         self.board[i + 16].get_column(),score])
+                if self.board[i].get_name() == "k" and self.board[i - 16].get_colour() == "white" and self.board[i].get_row() > 0:
+                    score = MoveScore().moveScore(self.board[i],self.board[i - 16].get_name())
+                    movesAtack.append(
+                        [self.board[i].get_row(),self.board[i].get_column(),self.board[i - 16].get_row(),
+                         self.board[i - 16].get_column(),score])
+                if self.board[i].get_name() == "k" and self.board[i + 1].get_colour() == "white":
+                    score = MoveScore().moveScore(self.board[i],self.board[i + 1].get_name())
+                    movesAtack.append(
+                        [self.board[i].get_row(),self.board[i].get_column(),self.board[i + 1].get_row(),
+                         self.board[i + 1].get_column(),score])
+                if self.board[i].get_name() == "k" and self.board[i - 1].get_colour() == "white":
+                    score = MoveScore().moveScore(self.board[i],self.board[i - 1].get_name())
+                    movesAtack.append(
+                        [self.board[i].get_row(),self.board[i].get_column(),self.board[i - 1].get_row(),
+                         self.board[i - 1].get_column(),score])
+                if self.board[i].get_name() == "k" and self.board[i].get_row()<15 and self.board[i + 15].get_colour() == "white":
+                    score = MoveScore().moveScore(self.board[i],self.board[i + 15].get_name())
+                    movesAtack.append(
+                        [self.board[i].get_row(),self.board[i].get_column(),self.board[i + 15].get_row(),
+                         self.board[i + 15].get_column(),score])
+                if self.board[i].get_name() == "k" and self.board[i - 17].get_colour() == "white" and self.board[i].get_row() > 0:
+                    score = MoveScore().moveScore(self.board[i],self.board[i - 17].get_name())
+                    movesAtack.append(
+                        [self.board[i].get_row(),self.board[i].get_column(),self.board[i - 17].get_row(),
+                         self.board[i - 17].get_column(),score])
+                if self.board[i].get_name() == "k" and self.board[i].get_row()< 15 and self.board[i + 17].get_colour() == "white":
+                    score = MoveScore().moveScore(self.board[i],self.board[i + 17].get_name())
+                    movesAtack.append(
+                        [self.board[i].get_row(),self.board[i].get_column(),self.board[i + 17].get_row(),
+                         self.board[i + 17].get_column(),score])
+                if self.board[i].get_name() == "k" and self.board[i - 15].get_colour() == "white" and self.board[i].get_row() > 0:
+                    score = MoveScore().moveScore(self.board[i],self.board[i - 15].get_name())
+                    movesAtack.append(
+                        [self.board[i].get_row(),self.board[i].get_column(),self.board[i - 15].get_row(),
+                         self.board[i - 15].get_column(),score])
         return movesAtack
 
 
@@ -253,7 +293,7 @@ class RookBlack(PiecesStrategy):
                 moves.append(
                     [self.board[i].get_row(),self.board[i].get_column(),spaceDown[0].get_row(),
                      spaceDown[0].get_column(),score])
-            if self.board[i].get_name() == "r" and self.board[i + 1].get_name() == " ":
+            if self.board[i].get_name() == "r" and self.board[i + 1].get_name() == " " and self.board[i].get_column() < 16:
                 spaceRight = MovesBoard().moveLine("right",self.board,self.board[i])
                 score = MoveScore().moveScore(self.board[i],spaceRight[0].get_name())
                 moves.append(
@@ -270,11 +310,12 @@ class RookBlack(PiecesStrategy):
     def movesAtack(self):
         movesAtack = []
         for i in range(0,len(self.board)):
-            if self.board[i].get_name() == "r" and self.board[i + 16].get_name() == " ":
+            if self.board[i].get_name() == "r" and self.board[i].get_row()<15 and self.board[i + 16].get_name() == " ":
                 spaceUp = MovesBoard().moveLine("up",self.board,self.board[i])
                 if self.board[i + (len(spaceUp) * 16)].get_row()<15 and self.board[
                     i + ((len(spaceUp) + 1) * 16)].get_colour() == "white":
-                    score = MoveScore().moveScore(self.board[i],self.board[i + ((len(spaceUp) + 1) * 16)].get_name())
+                    score = MoveScore().moveScore(self.board[i],
+                                                  self.board[i + ((len(spaceUp) + 1) * 16)].get_name())
                     movesAtack.append(
                         [self.board[i].get_row(),self.board[i].get_column(),
                          self.board[i + ((len(spaceUp) + 1) * 16)].get_row(),
@@ -283,29 +324,29 @@ class RookBlack(PiecesStrategy):
                 spaceDown = MovesBoard().moveLine("down",self.board,self.board[i])
                 if self.board[i - (len(spaceDown) * 16)].get_row()>0 and self.board[
                     i - ((len(spaceDown) + 1) * 16)].get_colour() == "white":
-                    score = MoveScore().moveScore(self.board[i],self.board[i - ((len(spaceDown) + 1) * 16)].get_name())
+                    score = MoveScore().moveScore(self.board[i],
+                                                  self.board[i - ((len(spaceDown) + 1) * 16)].get_name())
                     movesAtack.append(
                         [self.board[i].get_row(),self.board[i].get_column(),
                          self.board[i - ((len(spaceDown) + 1) * 16)].get_row(),
                          self.board[i - ((len(spaceDown) + 1) * 16)].get_column(),score])
-            if self.board[i].get_name() == "r" and self.board[i + 1].get_name() == " ":
+            if self.board[i].get_name() == "r" and self.board[i].get_column()<15 and self.board[i + 1].get_name() == " ":
                 spaceRight = MovesBoard().moveLine("right",self.board,self.board[i])
-                if self.board[i + len(spaceRight)].get_column()<15 and self.board[
-                    i + len(spaceRight) + 1].get_colour() == "white":
+                if self.board[i + len(spaceRight)].get_column()<15 and self.board[i + len(spaceRight) + 1].get_colour() == "white":
                     score = MoveScore().moveScore(self.board[i],self.board[i + len(spaceRight) + 1].get_name())
                     movesAtack.append(
                         [self.board[i].get_row(),self.board[i].get_column(),
                          self.board[i + len(spaceRight) + 1].get_row(),
                          self.board[i + len(spaceRight) + 1].get_column(),score])
-            if self.board[i].get_name() == "r" and self.board[i - 1].get_name() == " ":
-                spaceLeft = MovesBoard().moveLine("left",self.board,self.board[i])
-                if self.board[i - len(spaceLeft)].get_column()>0 and self.board[
-                    i - len(spaceLeft) + 1].get_colour() == "white":
-                    score = MoveScore().moveScore(self.board[i],self.board[i - len(spaceLeft) + 1].get_name())
+            if self.board[i].get_name() == "r" and self.board[i].get_column()>0 and self.board[i - 1].get_name() == " ":
+                spaceRight = MovesBoard().moveLine("right",self.board,self.board[i])
+                if self.board[i - len(spaceRight)].get_column()>=0 and self.board[
+                    i - (len(spaceRight))].get_colour() == "white":
+                    score = MoveScore().moveScore(self.board[i],self.board[i - len(spaceRight) + 1].get_name())
                     movesAtack.append(
                         [self.board[i].get_row(),self.board[i].get_column(),
-                         self.board[i - len(spaceLeft) + 1].get_row(),
-                         self.board[i - len(spaceLeft) + 1].get_column(),score])
+                         self.board[i - len(spaceRight)].get_row(),
+                         self.board[i - len(spaceRight)].get_column(),score])
         return movesAtack
 
 
@@ -326,13 +367,13 @@ class BishopBlack(PiecesStrategy):
                     [self.board[i].get_row(),self.board[i].get_column(),spaceRD[0].get_row(),
                      spaceRD[0].get_column(),score])
             if self.board[i].get_name() == "b" and self.board[i - 17].get_name() == " ":
-                spaceDR = MovesBoard().moveDiagonal("dr",self.board,self.board[i])
+                spaceDR = MovesBoard().moveDiagonal("dl",self.board,self.board[i])
                 score = MoveScore().moveScore(self.board[i],spaceDR[0].get_name())
                 moves.append(
                     [self.board[i].get_row(),self.board[i].get_column(),spaceDR[0].get_row(),
                      spaceDR[0].get_column(),score])
-            if self.board[i].get_name() == "b" and self.board[i - 15].get_name() == " ":
-                spaceRD = MovesBoard().moveDiagonal("dl",self.board,self.board[i])
+            if self.board[i].get_name() == "b" and self.board[i - 15].get_name() == " " and self.board[i].get_row() > 0:
+                spaceRD = MovesBoard().moveDiagonal("dr",self.board,self.board[i])
                 score = MoveScore().moveScore(self.board[i],spaceRD[0].get_name())
                 moves.append(
                     [self.board[i].get_row(),self.board[i].get_column(),spaceRD[0].get_row(),
@@ -362,8 +403,7 @@ class BishopBlack(PiecesStrategy):
                          self.board[i + ((len(spaceldd1) + 1) * 15)].get_column(),score])
             if self.board[i].get_name() == "b" and self.board[i - 17].get_name() == " ":
                 spaceDR1 = MovesBoard().moveDiagonal("dr",self.board,self.board[i])
-                if self.board[i - (len(spaceDR1) * 17)].get_column()<15 and self.board[
-                    i - ((len(spaceDR1) + 1) * 17)].get_colour() == "white":
+                if self.board[i - (len(spaceDR1) * 17)].get_column()<15 and self.board[i - ((len(spaceDR1) + 1) * 17)].get_colour() == "white":
                     score = MoveScore().moveScore(self.board[i],self.board[i - ((len(spaceDR1) + 1) * 17)].get_name())
                     movesAtack.append(
                         [self.board[i].get_row(),self.board[i].get_column(),
