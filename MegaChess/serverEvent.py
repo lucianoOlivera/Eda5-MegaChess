@@ -45,17 +45,18 @@ class YourTurn(ServerEvent):
 
     def run(self):
         messageEvent['action'] = 'move'
-        messageEvent['data']['board_id'] = self.response['data']['board_id']
-        messageEvent['data']['turn_token'] = self.response['data']['turn_token']
+        messageEvent['board_id'] = self.response['data']['board_id']
+        messageEvent['turn_token'] = self.response['data']['turn_token']
         boardTurn = self.response['data']['board']
         colorTurn = self.response['data']['actual_turn']
         moveleft = self.response['data']['move_left']
         turntoken = self.response['data']['turn_token']
-        game = Game(boardTurn,turntoken,moveleft)
-        result = game.defineStrategy(colorTurn)
-        messageEvent['data']['from_row'] = result[0]
-        messageEvent['data']['from_col'] = result[1]
-        messageEvent['data']['to_row'] = result[2]
-        messageEvent['data']['to_col'] = result[3]
-
+        game = Game(turntoken,colorTurn,moveleft)
+        result = game.defineStrategy(boardTurn)
+        print(result)
+        messageEvent['from_row'] = result[0]
+        messageEvent['from_col'] = result[1]
+        messageEvent['to_row'] = result[2]
+        messageEvent['to_col'] = result[3]
         return messageEvent
+
