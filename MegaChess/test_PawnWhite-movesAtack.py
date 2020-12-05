@@ -60,7 +60,7 @@ boardGameNone = Board(boardNone).boardGame()
    "imput,expected",[
             (boardGameNone,[]),
             (boardGameStart,[]),
-            (boardGame,[[9, 6, 10, 7, 20], [9, 6, 10, 5, 20]]
+            (boardGame,[[9, 6, 8, 5, 20], [9, 6, 8, 7, 20]]
 )
        ])
 def test_PawnWhiteMovesAtack(imput,expected):

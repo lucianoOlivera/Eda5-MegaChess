@@ -60,7 +60,8 @@ boardGameNone = Board(boardNone).boardGame()
    "imput,expected",[
             (boardGame,[]),
             (boardGameNone,[]),
-            (boardGameStart,[[8, 7, 11, 10, 40], [8, 7, 11, 4, 40], [8, 7, 4, 11, 40], [8, 7, 4, 3, 40]])
+            (boardGameStart,[[8, 7, 11, 10, 40], [8, 7, 11, 4, 40], [8, 7, 4, 3, 40], [8, 7, 4, 11, 40]]
+)
        ])
 def test_BishopWhiteMoves(imput,expected):
     assert BishopWhite(imput).moves() == expected
