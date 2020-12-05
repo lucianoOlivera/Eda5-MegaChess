@@ -23,8 +23,3 @@ class Game():
         return result
 
 
-boardStart ='rrhhbbqqkkbbhhrrrrhhbbqqkkbbhhrrp ppppppppppppppp pppppppppppppp p               p                                                                               P                              P PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPRRHHBBQQKKBBHHRRRRHHBBQQKKBBHHRR'
-
-a = Game(4,"white",5)
-s =a.defineStrategy(boardStart)
-print(s)
