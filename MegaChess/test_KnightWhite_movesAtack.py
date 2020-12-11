@@ -1,7 +1,7 @@
 import pytest
 
 from board import Board
-from whiteStrategy import KingWhite
+from whiteStrategy import KnightWhite
 
 board = (      'rrhhbbqqkkbbhhrr'
                'rrhhbbbqkkbbhhrr'
@@ -24,11 +24,11 @@ boardStart = (  'rrhhbbqqkkbbhhrr'
                 'pppppppppppppppp'
                 'pppppppppppppppp'
                 '                '
-                '                '
-                '       ppp      '
-                '       pKp      '
-                '       ppp      '
-                '                '
+                '   pppppppppp   '
+                '   pppppppppp   '
+                '       pHp      '
+                '   pppppppppp   '
+                '   pppppppppp   '
                 '                '
                 '                '
                 'PPPPPPPPPPPPPPPP'
@@ -43,9 +43,9 @@ boardNone=  (  'rrhhbbqqkkbbhhrr'
                '                '
                '                '
                '                '
-               '       PPP      '
-               '       PKP      '
-               '       PPP      '
+               '                '
+               '        H       '
+               '                '
                '                '
                '                '
                'PPPPPPPPPPPPPPPP'
@@ -60,8 +60,8 @@ boardGameNone = Board(boardNone).boardGame()
    "imput,expected",[
             (boardGame,[]),
             (boardGameNone,[]),
-            (boardGameStart,[[7, 8, 8, 8, 40], [7, 8, 6, 8, 40], [7, 8, 7, 9, 40], [7, 8, 7, 7, 40], [7, 8, 8, 7, 40], [7, 8, 6, 7, 40], [7, 8, 8, 9, 40], [7, 8, 6, 9, 40]]
+            (boardGameStart,[[7, 8, 8, 6, 40], [7, 8, 8, 10, 40], [7, 8, 9, 7, 40], [7, 8, 9, 9, 40], [7, 8, 6, 10, 40], [7, 8, 6, 6, 40], [7, 8, 5, 9, 40], [7, 8, 5, 7, 40]]
 )
        ])
-def test_KingWhiteMovesAtck(imput,expected):
-    assert KingWhite(imput).movesAtack() == expected
+def test_KnightWhite_MovesAtack(imput,expected):
+    assert KnightWhite(imput).movesAtack() == expected

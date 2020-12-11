@@ -60,7 +60,7 @@ boardGameNone = Board(boardNone).boardGame()
    "imput,expected",[
             (boardGame,[]),
             (boardGameNone,[]),
-            (boardGameStart,[[7, 8, 8, 8, 40], [7, 8, 6, 8, 40], [7, 8, 7, 9, 40], [7, 8, 7, 7, 40], [7, 8, 8, 7, 40], [7, 8, 6, 7, 40], [7, 8, 8, 9, 40], [7, 8, 6, 9, 40]]
+            (boardGameStart,[[7, 8, 8, 8, 110], [7, 8, 6, 8, 110], [7, 8, 7, 9, 110], [7, 8, 7, 7, 110], [7, 8, 8, 7, 110], [7, 8, 6, 7, 110], [7, 8, 8, 9, 110], [7, 8, 6, 9, 110]]
 )
        ])
 def test_KingWhiteMovesAtck(imput,expected):

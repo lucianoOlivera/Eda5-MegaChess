@@ -61,7 +61,7 @@ boardGameNone = Board(boardNone).boardGame()
    "imput,expected",[
             (boardGame,[]),
             (boardGameNone,[]),
-            (boardGameStart,[[8, 7, 10, 7, 60], [8, 7, 6, 7, 60], [8, 7, 8, 13, 60], [8, 7, 8, 2, 60]])
+            (boardGameStart,[[8, 7, 10, 7, 15], [8, 7, 6, 7, 15], [8, 7, 8, 13, 15], [8, 7, 8, 2, 15]])
 
        ])
 def test_RookWhiteMoves(imput,expected):

@@ -61,8 +61,8 @@ boardGameNone = Board(boardNone).boardGame()
    "imput,expected",[
             (boardGame,[]),
             (boardGameNone,[]),
-            (boardGameStart,[[8, 7, 9, 7, 30], [8, 7, 7, 7, 30], [8, 7, 8, 8, 30], [8, 7, 8, 6, 30], [8, 7, 9, 6, 30], [8, 7, 7, 6, 30], [8, 7, 9, 8, 30], [8, 7, 7, 8, 30]]
-)
-       ])
-def test_KingWhiteMoves(imput,expected):
+            (boardGameStart,[[8, 7, 9, 7, 15], [8, 7, 7, 7, 15], [8, 7, 8, 8, 15], [8, 7, 8, 6, 15], [8, 7, 9, 6, 15], [8, 7, 7, 6, 100], [8, 7, 9, 8, 15], [8, 7, 7, 8, 15]]
+
+       )])
+def test_KingWhite_Moves(imput,expected):
     assert KingWhite(imput).moves() == expected
