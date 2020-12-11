@@ -1,12 +1,18 @@
-from pieces import Bishop,Queen,Empty,Knight,King,Pawn,Rook
+from pieces import (
+    Bishop,
+    Queen,
+    Empty,
+    Knight,
+    King,
+    Pawn,
+    Rook)
 
-
-class Factory(object):
+class FactoryBoardPieces(object):
     def get_BoardPieces(self,row,col,name):
         if name == "r":
             return Rook(row,col,'r','black')
         elif name == 'h':
-            return Knight(row,col,'k','black')
+            return Knight(row,col,'h','black')
         elif name == 'b':
             return Bishop(row,col,'b','black')
         elif name == 'q':
@@ -28,4 +34,4 @@ class Factory(object):
         elif name == 'P':
             return Pawn(row,col,'P','white')
         elif name == " ":
-            return Empty(row,col," ",None)
+             return Empty(row,col," ",None)
