@@ -1,6 +1,5 @@
 from abc import ABC,abstractmethod
 from board import Board
-import numpy as np
 
 """<<Interface>>StrategyChess"""
 
