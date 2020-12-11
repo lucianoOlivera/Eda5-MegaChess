@@ -1,7 +1,7 @@
 import pytest
 
 from board import Board
-from whiteStrategy import KnightWhite
+from blackStrategy import KnightBlack
 
 board = (      'rrhhbbqqkkbbhhrr'
                'rrhhbbbqkkbbhhrr'
@@ -9,7 +9,7 @@ board = (      'rrhhbbqqkkbbhhrr'
                'pppppppppppppppp'
                'rrrrrrrrrrrrrrrr'
                '                '
-               '       k        '
+               '                '
                '                '
                '                '
                '                '
@@ -24,11 +24,11 @@ boardStart = (  'rrhhbbqqkkbbhhrr'
                 'pppppppppppppppp'
                 'pppppppppppppppp'
                 '                '
-                '                '
-                '       ppp      '
-                '       pKp      '
-                '       ppp      '
-                '                '
+                '  PPPPPPPPPPP   '
+                '  PPPPPPPPPPP   '
+                '      php       '
+                '  PPPPPPPPPPP   '
+                '  PPPPPPPPPPP   '
                 '                '
                 '                '
                 'PPPPPPPPPPPPPPPP'
@@ -44,7 +44,7 @@ boardNone=  (  'rrhhbbqqkkbbhhrr'
                '                '
                '                '
                '                '
-               '        H       '
+               '        h       '
                '                '
                '                '
                '                '
@@ -60,6 +60,8 @@ boardGameNone = Board(boardNone).boardGame()
    "imput,expected",[
             (boardGame,[]),
             (boardGameNone,[]),
+            (boardGameStart,[[7, 7, 8, 5, 40], [7, 7, 8, 9, 40], [7, 7, 9, 6, 40], [7, 7, 9, 8, 40], [7, 7, 6, 9, 40], [7, 7, 6, 5, 40], [7, 7, 5, 8, 40], [7, 7, 5, 6, 40]]
+)
        ])
-def test_KnightWhite_MovesAtack(imput,expected):
-    assert KnightWhite(imput).movesAtack() == expected
+def test_KnightBlack_MovesAtack(imput,expected):
+    assert KnightBlack(imput).movesAtack() == expected

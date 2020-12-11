@@ -1,5 +1,5 @@
 import pytest
-from black_Strategy import BishopBlack
+from blackStrategy import BishopBlack
 from board import Board
 
 board = (      'rrhhbbqqkkbbhhrr'

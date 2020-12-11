@@ -2,13 +2,13 @@ import pytest
 
 
 from board import Board
-from whiteStrategy import KnightWhite
+from blackStrategy import KnightBlack
 
 board = (      'rrhhbbqqkkbbhhrr'
                'rrhhbbbqkkbbhhrr'
                'pppppppppppppppp'
                'pppppppppppppppp'
-               'rrrrrrrrrrrrrrrr'
+               '                '
                '                '
                '                '
                '                '
@@ -28,7 +28,7 @@ boardStart = (  'rrhhbbqqkkbbhhrr'
                 '                '
                 '                '
                 '                '
-                '       K        '
+                '       h        '
                 '                '
                 '                '
                 '                '
@@ -43,11 +43,11 @@ boardNone=  (  'rrhhbbqqkkbbhhrr'
                'pppppppppppppppp'
                '                '
                '                '
-               '  PPPPPPPPPP    '
-               '  PPPPPPPPPP    '
-               '  PPPPPHPPPP    '
-               '  PPPPPPPPPP    '
-               '  PPPPPPPPPP    '
+               '  pppppppppp    '
+               '  pppppppppp    '
+               '  ppppphpppp    '
+               '  pppppppppp    '
+               '  pppppppppp    '
                '                '
                'PPPPPPPPPPPPPPPP'
                'PPPPPPPPPPPPPPPP'
@@ -60,7 +60,9 @@ boardGameNone = Board(boardNone).boardGame()
 @pytest.mark.parametrize(
    "imput,expected",[
             (boardGame,[]),
-            (boardGameNone,[])
+            (boardGameNone,[]),
+            (boardGameStart,[[8, 7, 9, 5, 15], [8, 7, 9, 9, 15], [8, 7, 10, 6, 15], [8, 7, 10, 8, 15], [8, 7, 7, 9, 30], [8, 7, 7, 5, 15], [8, 7, 6, 8, 15], [8, 7, 6, 6, 15]]
+)
        ])
-def test_KingWhite_Moves(imput,expected):
-    assert KnightWhite(imput).moves() == expected
+def test_KnightBlack_Moves(imput,expected):
+    assert KnightBlack(imput).moves() == expected
