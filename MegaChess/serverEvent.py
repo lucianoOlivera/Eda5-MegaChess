@@ -1,5 +1,3 @@
-from abc import ABC
-
 from game import Game
 
 messageEvent = {}
