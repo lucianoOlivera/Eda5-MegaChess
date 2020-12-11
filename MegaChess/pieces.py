@@ -10,9 +10,6 @@ class Pieces(object):
     def __str__(self):
         return f'row : {self.row} col = {self.column} name: {self.name}'
 
-    def get_position(self):
-        return f'row : {self.row} col = {self.column}'
-
     def get_row(self):
         return self.row
 
