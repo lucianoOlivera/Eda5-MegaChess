@@ -1,5 +1,4 @@
 import pytest
-
 from blackStrategy import BishopBlack
 from board import Board
 

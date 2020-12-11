@@ -1,7 +1,12 @@
-from serverEvent import AskChallenge,GameOver,UpdateUserList,YourTurn
+from serverEvent import (
+    AskChallenge,
+    GameOver,
+    UpdateUserList,
+    YourTurn)
 
 
-class FactoryEvent(object):
+class FactoryServerEvent(object):
+    @classmethod
     def get_event(self,event,response):
         if event is 'update_user_list':
              UpdateUserList(response).run()
