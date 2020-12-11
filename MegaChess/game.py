@@ -4,6 +4,7 @@ from blackStrategy import BlackStrategy
 from whiteStrategy import WhiteStrategy
 
 
+
 class Game():
     def __init__(self,board_id,turn_token,move_left):
         self.board_id = board_id
@@ -23,4 +24,3 @@ class Game():
         elif self.turn_token == "black":
             result = Context(BlackStrategy()).strategyLogic(boardStrategy)
         return result
-
