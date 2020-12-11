@@ -1,147 +1,183 @@
 class MovesBoard():
-    down = []
-    up = []
-    right = []
-    left = []
-    rd = []
-    downe = []
-    upe = []
-    righte = []
-    lefte = []
-    ldd = []
-    dr = []
-    dl = []
-    rde = []
-    ldde = []
-    dre = []
-    dle = []
-    def moveLine(self,dir,board,boardI):
+    moveline = []
+    movediagonal = []
+    movelineenemy = []
+    movediagonalenemy = []
+    def moveLine(self,dir,board,piece):
+        """
+
+        Resuelve la cantidad de espacio libre entre un pieza origen para poder hacer un movimiento en linea de espacio libre
+
+        Devuelve la pieza destino que está situada a una distancia n espacio “ ” antes de otra pieza diferente a  “ ”
+
+        parámetro
+        dir----> Es la dirección donde va resolver
+        board----> Tablero del turno
+        piece----> pieza origen
+
+        """
         for i in range(0,len(board)):
-            if (board[i].get_row() == boardI.get_row() and board[i].get_column() == boardI.get_column()) and 0<board[i].get_column()<15 and 0<board[i].get_row()<15:
+            if (board[i].get_row() == piece.get_row() and board[i].get_column() == piece.get_column()) and 0<board[i].get_column()<15 and 0<board[i].get_row()<15:
                 if dir == 'up':
-                    self.up.clear()
+                    self.moveline.clear()
                     if board[i + 16].get_name() == " ":
                         MovesBoard().moveLine(dir,board,board[i + 16])
-                        self.up.append(board[i + 16])
-                        return self.up
+                        self.moveline.append(board[i + 16])
+                        return self.moveline
                 elif dir == 'down':
-                    self.down.clear()
+                    self.moveline.clear()
                     if board[ i - 16].get_name() == " ":
                         MovesBoard().moveLine(dir,board,board[i - 16])
-                        self.down.append(board[i - 16])
-                        return self.down
+                        self.moveline.append(board[i - 16])
+                        return self.moveline
                 elif dir == 'right':
                     if board[i + 1].get_name() == " " :
-                        self.right.clear()
+                        self.moveline.clear()
                         if board[i].get_column() != 0:
                             MovesBoard().moveLine(dir,board,board[i + 1])
-                            self.right.append(board[i + 1])
-                            return self.right
+                            self.moveline.append(board[i + 1])
+                            return self.moveline
                 elif dir == 'left':
                     if board[i - 1].get_name() == " " :
-                        self.left.clear()
+                        self.moveline.clear()
                         if board[i].get_column() != 0:
                             MovesBoard().moveLine(dir,board,board[i - 1])
-                            self.left.append(board[i - 1])
-                            return self.left
+                            self.moveline.append(board[i - 1])
+                            return self.moveline
 
     def moveDiagonal(self,dir,board,boardI):
+        """
 
+        Resuelve la cantidad de espacio libre entre un pieza origen para poder hacer un movimiento en diagonal de espacio libre
+
+        Devuelve la pieza destino que está situada a una distancia n espacio “ ” antes de otra pieza diferente a  “ ”
+
+        Parámetro
+        dir----> Es la dirección donde va resolver
+        board----> Tablero del turno
+        piece----> pieza origen
+
+        """
         for i in range(0,len(board)):
             if (board[i].get_row() == boardI.get_row() and board[i].get_column() == boardI.get_column())and 0<board[i].get_column()<15 and 0<board[i].get_row()<15:
                 if dir == 'rd':  # (right diagonal up)
-                    self.rd.clear()
+                    self.movediagonal.clear()
                     if board[ i + 17].get_name() == " ":
                             MovesBoard().moveDiagonal(dir,board,board[i + 17])
-                            self.rd.append(board[i + 17])
-                            return self.rd
+                            self.movediagonal.append(board[i + 17])
+                            return self.movediagonal
                 elif dir == 'ldd':  # (left diagonal up)
-                    self.ldd.clear()
+                    self.movediagonal.clear()
                     if board[i + 15].get_name() == " " :
                             MovesBoard().moveDiagonal(dir,board,board[i + 15])
-                            self.ldd.append(board[i + 15])
-                            return self.ldd
+                            self.movediagonal.append(board[i + 15])
+                            return self.movediagonal
                 elif dir == 'dr':  # (right diagonal down)
-                    self.dr.clear()
+                    self.movediagonal.clear()
                     if board[i - 15].get_name() == " ":
                         MovesBoard().moveDiagonal(dir,board,board[i - 15])
-                        self.dr.append(board[i - 15])
-                        return self.dr
+                        self.movediagonal.append(board[i - 15])
+                        return self.movediagonal
                 elif dir == 'dl':  # (left diagonal down)
-                    self.dl.clear()
+                    self.movediagonal.clear()
                     if board[i - 17].get_name() == " " :
                         MovesBoard().moveDiagonal(dir,board,board[i - 17])
-                        self.dl.append(board[i - 17])
-                        return self.dl
+                        self.movediagonal.append(board[i - 17])
+                        return self.movediagonal
 
-    def moveLineEnemy(self,dir,board,boardI,colour):
+    def moveLineEnemy(self,dir,board,piece,colour):
+        """
+        Resuelve la cantidad de espacio libre entre un pieza origen para poder hacer un movimiento en línea hasta una pieza enemiga
+
+        Devuelve la pieza destino que es una pieza enemiga
+
+        Parámetro
+        dir----> Es la dirección donde va resolver
+        board----> Tablero del turno
+        piece----> pieza origen
+        colour---> Color de pieza a atacar
+
+        """
+
         for i in range(0,len(board)):
-            if (board[i].get_row() == boardI.get_row() and board[i].get_column() == boardI.get_column()) and 0<board[i].get_column()<15 and 0<board[i].get_row()<15:
+            if (board[i].get_row() == piece.get_row() and board[i].get_column() == piece.get_column()) and 0<board[i].get_column()<15 and 0<board[i].get_row()<15:
                 if dir == 'up':
-                    self.upe.clear()
+                    self.movelineenemy.clear()
                     if board[i + 16].get_colour() == colour:
-                        self.upe.append(board[i + 16])
-                        return self.upe
+                        self.movelineenemy.append(board[i + 16])
+                        return self.movelineenemy
                     elif board[i + 16].get_name() == " ":
                         MovesBoard().moveLineEnemy(dir,board,board[i + 16],colour)
-                        return self.upe
+                        return self.movelineenemy
                 elif dir == 'down':
-                    self.downe.clear()
+                    self.movelineenemy.clear()
                     if board[i - 16].get_colour() == colour:
-                        self.downe.append(board[i - 16])
-                        return self.downe
+                        self.movelineenemy.append(board[i - 16])
+                        return self.movelineenemy
                     elif board[i - 16].get_name() == " ":
                         MovesBoard().moveLineEnemy(dir,board,board[i - 16],colour)
-                        return self.downe
+                        return self.movelineenemy
                 elif dir == 'right':
-                    self.righte.clear()
+                    self.movelineenemy.clear()
                     if board[i + 1].get_colour() == colour :
-                        self.righte.append(board[i + 1])
-                        return self.righte
+                        self.movelineenemy.append(board[i + 1])
+                        return self.movelineenemy
                     elif board[i + 16].get_name() == " ":
                         MovesBoard().moveLineEnemy(dir,board,board[i + 1],colour)
-                        return self.righte
+                        return self.movelineenemy
                 elif dir == 'left':
-                    self.lefte.clear()
+                    self.movelineenemy.clear()
                     if board[i - 1].get_colour() == colour:
-                        self.lefte.append(board[i - 1])
-                        return self.lefte
+                        self.movelineenemy.append(board[i - 1])
+                        return self.movelineenemy
                     elif board[i + 16].get_name() == " ":
                         MovesBoard().moveLineEnemy(dir,board,board[i - 1],colour)
-                        return self.lefte
+                        return self.movelineenemy
 
-    def moveDiagonalEnemy(self,dir,board,boardI,colour):
+    def moveDiagonalEnemy(self,dir,board,piece,colour):
+        """
+        resuelve la cantidad de espacio libre entre un pieza origen para poder hacer un movimiento en diagonal hasta una pieza enemiga
+
+        devuelve la pieza destino que es una pieza enemiga
+
+        parámetro
+        dir----> Es la dirección donde va resolver
+        board----> Tablero del turno
+        piece----> pieza origen
+        colour---> Color de pieza a atacar
+
+        """
         for i in range(0,len(board)):
-            if (board[i].get_row() == boardI.get_row() and board[i].get_column() == boardI.get_column())and 0 <board[i].get_column()<15and 0<board[i].get_row()<15:
+            if (board[i].get_row() == piece.get_row() and board[i].get_column() == piece.get_column())and 0 <board[i].get_column()<15and 0<board[i].get_row()<15:
                 if dir == 'rd':  # (right diagonal up)
-                    self.rde.clear()
+                    self.movediagonalenemy.clear()
                     if board[ i + 17].get_colour() == colour :
-                            self.rde.append(board[i + 17])
-                            return self.rde
+                            self.movediagonalenemy.append(board[i + 17])
+                            return self.movediagonalenemy
                     elif board[ i + 17].get_name() == " ":
                             MovesBoard().moveDiagonalEnemy(dir,board,board[i + 17],colour)
-                            return self.rde
+                            return self.movediagonalenemy
                 elif dir == 'ldd':  # (left diagonal up
-                    self.ldde.clear()
+                    self.movediagonalenemy.clear()
                     if board[i + 15].get_colour() == colour :
-                            self.ldde.append(board[i + 15])
-                            return self.ldde
+                            self.movediagonalenemy.append(board[i + 15])
+                            return self.movediagonalenemy
                     elif board[i + 15].get_name() == " ":
                             MovesBoard().moveDiagonalEnemy(dir,board,board[i + 15],colour)
-                            return self.ldde
+                            return self.movediagonalenemy
                 elif dir == 'dr':  # (right diagonal down)
-                    self.dre.clear()
+                    self.movediagonalenemy.clear()
                     if board[i - 15].get_colour() == colour:
-                        self.dre.append(board[i - 15])
-                        return self.dre
+                        self.movediagonalenemy.append(board[i - 15])
+                        return self.movediagonalenemy
                     elif board[i - 15].get_name() == " ":
                         MovesBoard().moveDiagonalEnemy(dir,board,board[i - 15],colour)
-                        return self.dre
+                        return self.movediagonalenemy
                 elif dir == 'dl':  # (left diagonal down
-                    self.dle.clear()
+                    self.movediagonalenemy.clear()
                     if board[i - 17].get_colour() == colour :
-                        self.dle.append(board[i - 17])
-                        return self.dle
+                        self.movediagonalenemy.append(board[i - 17])
+                        return self.movediagonalenemy
                     elif board[i - 17].get_name() == " ":
                         MovesBoard().moveDiagonalEnemy(dir,board,board[i - 17],colour)
-                        return self.dle
+                        return self.movediagonalenemy
